@@ -6,11 +6,11 @@ public class Carreau {
 
 	private int hauteur;
 
-	public int getHauteur() {
+	private int getHauteur() {
 		return this.hauteur;
 	}
 
-	public void setHauteur(int hauteur) {
+	private void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
@@ -18,8 +18,30 @@ public class Carreau {
 
 	private int longueur;
 
+	private int getLongueur() {
+		return this.longueur;
+	}
+
+	private void setLongueur(int longueur) {
+		this.longueur = longueur;
+	}
+
 	// LETTRE
 
 	private char lettre;
+
+	private char getLettre() {
+		return this.lettre;
+	}
+
+	private void setLettre(char lettre) {
+		this.lettre = lettre;
+	}
+
+	private void EnregistrerCarreau(int longueur, int hauteur, char lettre) {
+		this.setLongueur(longueur);
+		this.setHauteur(hauteur);
+		this.setLettre(lettre);
+	}
 
 }
