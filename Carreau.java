@@ -16,14 +16,14 @@ public class Carreau {
 
 	// LONGUEUR
 
-	private int longueur;
+	private int largeur;
 
-	private int getLongueur() {
-		return this.longueur;
+	private int getLargeur() {
+		return this.largeur;
 	}
 
-	private void setLongueur(int longueur) {
-		this.longueur = longueur;
+	private void setLargeur(int largeur) {
+		this.largeur = largeur;
 	}
 
 	// LETTRE
@@ -38,10 +38,14 @@ public class Carreau {
 		this.lettre = lettre;
 	}
 
-	private void EnregistrerCarreau(int longueur, int hauteur, char lettre) {
-		this.setLongueur(longueur);
+	public void EnregistrerCarreau(int largeur, int hauteur, char lettre) {
+		this.setLargeur(largeur);
 		this.setHauteur(hauteur);
 		this.setLettre(lettre);
+	}
+
+	public String AfficherCarreau() {
+		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();
 	}
 
 }
