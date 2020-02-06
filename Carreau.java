@@ -2,9 +2,17 @@ package fr.thetilerteam;
 
 public class Carreau {
 
-	// HAUTEUR
-
 	private int hauteur;
+	private int largeur;
+	private char lettre;
+
+	public Carreau(int largeur, int hauteur, char lettre) {
+		this.setLargeur(largeur);
+		this.setHauteur(hauteur);
+		this.setLettre(lettre);
+	}
+
+	// HAUTEUR
 
 	private int getHauteur() {
 		return this.hauteur;
@@ -16,8 +24,6 @@ public class Carreau {
 
 	// LONGUEUR
 
-	private int largeur;
-
 	private int getLargeur() {
 		return this.largeur;
 	}
@@ -28,8 +34,6 @@ public class Carreau {
 
 	// LETTRE
 
-	private char lettre;
-
 	private char getLettre() {
 		return this.lettre;
 	}
@@ -38,14 +42,22 @@ public class Carreau {
 		this.lettre = lettre;
 	}
 
-	public void EnregistrerCarreau(int largeur, int hauteur, char lettre) {
-		this.setLargeur(largeur);
-		this.setHauteur(hauteur);
-		this.setLettre(lettre);
-	}
+	// TEST
 
 	public String AfficherCarreau() {
 		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();
+	}
+
+	// CARREAU DE TAILLE N
+
+	public boolean CarreauTailleN(int n) {
+		return n == this.getLargeur() || n == this.getHauteur();
+	}
+
+	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
+
+	public void MettreLettreEnMaj() {
+		this.lettre = Character.toUpperCase(this.lettre);
 	}
 
 }
