@@ -1,20 +1,26 @@
 package fr.thetilerteam;
 
 public class Mur {
-	private int[][] mur;
+	private char[][] mur;
 
 	public Mur() {
-		this.mur = new int[7][10];
-		this.initialiserTableau();
-	}
-
-	public void initialiserTableau() {
-		this.mur[5][0] = this.mur.length;
-		this.mur[6][0] = this.mur[0].length;
+		this.mur = new char[5][12];
 	}
 
 	public int getMur(int x, int y) {
 		return this.mur[x][y];
+	}
+
+	public void setMur(int x, int y, char valeur) {
+		this.mur[x][y] = valeur;
+	}
+
+	public int tailleXTableau() {
+		return this.mur.length;
+	}
+
+	public int tailleYTableau() {
+		return this.mur[0].length;
 	}
 
 }
