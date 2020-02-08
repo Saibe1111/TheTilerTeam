@@ -25,11 +25,9 @@ public class FonctionCarreau {
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
 
 	public static ArrayList<Carreau> MettreLettreEnMaj(ArrayList<Carreau> Carreau) {
-		for (Carreau car : Carreau) {
+		for (Carreau car : Carreau)
 			car.MettreLettreEnMaj();
-		}
 		return Carreau;
-
 	}
 
 }

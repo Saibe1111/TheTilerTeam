@@ -4,14 +4,14 @@ public class Carte {
 	String nomCarte;
 	char TypeCarte;
 
+	// DEFAULT
+
 	public Carte(String nom, char type) {
 		this.nomCarte = nom;
 		this.TypeCarte = type;
 	}
 
-	public String getNomCarte() {
-		return this.nomCarte;
-	}
+	// TEMPORAIRE POUR TEST
 
 	public String AfficherCarte() {
 		return this.nomCarte + " " + this.TypeCarte;

@@ -6,6 +6,8 @@ public class Carreau {
 	private int largeur;
 	private char lettre;
 
+	// DEFAULT
+
 	public Carreau(int largeur, int hauteur, char lettre) {
 		this.setLargeur(largeur);
 		this.setHauteur(hauteur);
@@ -14,7 +16,7 @@ public class Carreau {
 
 	// HAUTEUR
 
-	private int getHauteur() {
+	public int getHauteur() {
 		return this.hauteur;
 	}
 
@@ -24,7 +26,7 @@ public class Carreau {
 
 	// LONGUEUR
 
-	private int getLargeur() {
+	public int getLargeur() {
 		return this.largeur;
 	}
 
@@ -34,7 +36,7 @@ public class Carreau {
 
 	// LETTRE
 
-	private char getLettre() {
+	public char getLettre() {
 		return this.lettre;
 	}
 
@@ -42,7 +44,7 @@ public class Carreau {
 		this.lettre = lettre;
 	}
 
-	// TEST
+	// TEMPORAIRE POUR TEST
 
 	public String AfficherCarreau() {
 		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();

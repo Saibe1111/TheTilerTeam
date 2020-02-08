@@ -2,15 +2,19 @@ package fr.thetilerteam;
 
 public class Mur {
 	private int[][] mur;
-//	ArrayList<Integer> list = new ArrayList<Integer>();
 
 	public Mur() {
-		this.mur = new int[5][10];
+		this.mur = new int[7][10];
+		this.initialiserTableau();
 	}
 
-	public String StringTab() {
+	public void initialiserTableau() {
+		this.mur[5][0] = this.mur.length;
+		this.mur[6][0] = this.mur[0].length;
+	}
 
-		return null;
+	public int getMur(int x, int y) {
+		return this.mur[x][y];
 	}
 
 }

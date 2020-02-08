@@ -10,17 +10,9 @@ public class Appli {
 		ArrayList<Carreau> carreauxRouge = FonctionCarreau.getCarreaux();
 		FonctionCarreau.MettreLettreEnMaj(carreauxRouge);
 		ArrayList<Carte> paquetCarte = FonctionCarte.getCarte();
-		for (Carte car : paquetCarte) {
-			System.out.println(car.AfficherCarte());
-		}
-
-		for (Carreau car : carreauxBleu) {
-			System.out.println(car.AfficherCarreau());
-		}
-		for (Carreau care : carreauxRouge) {
-			System.out.println(care.AfficherCarreau());
-		}
-
+		Mur mur = new Mur();
+		System.out.println(mur.getMur(6, 0));
+		System.out.println(mur.getMur(5, 0));
 	}
 
 }
