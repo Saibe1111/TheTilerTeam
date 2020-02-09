@@ -14,9 +14,10 @@ class MurTest {
 		System.out.println();
 
 		Mur mur = new Mur();
-		char c = 't';
-		mur.setMur(2, 10, c);
-		FonctionMur.afficherMur(mur);
+		mur.setMur(1, 10, "c");
+		mur.setMur(2, 2, "c");
+		//FonctionMur.afficherMur(mur);
+		System.out.println(mur.ToStringMur());
 	}
 
 }
