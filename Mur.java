@@ -6,7 +6,7 @@ public class Mur {
 	private ArrayList<char[]> mur;
 
 	public Mur() {
-		this.mur = new ArrayList();
+		this.mur = new ArrayList<char[]>();
 	}
 
 	public void ajoutLigne() {
@@ -17,13 +17,11 @@ public class Mur {
 		return mur.get(y)[x];
 	}
 
-	public void setMur(int x, int y, String valeur) {
+	public void setMur(int x, int y, char valeur) {
 		while (y > mur.size() - 2) {
 			this.ajoutLigne();
 		}
-		char test[] = mur.get(y);
-		test[x] = valeur.charAt(0);
-		mur.set(y, test);
+		mur.get(y)[x] = valeur;
 	}
 
 	public int tailleXTableau() {

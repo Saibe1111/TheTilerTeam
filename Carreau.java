@@ -82,7 +82,7 @@ public class Carreau {
 
 	}
 
-	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
+	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE)
 
 	public static ArrayList<Carreau> MettreLettreEnMaj(ArrayList<Carreau> Carreau) {
 		for (Carreau car : Carreau)
