@@ -14,9 +14,7 @@ class MurTest {
 		// FonctionMur.afficherMur(mur);
 
 		Mur mur = new Mur();
-
-		mur.ajoutLigne();
-		mur.setMur(4, 0, "a");
+		mur.setMur(4, 1, "a");
 		System.out.println(mur.ToStringMur());
 
 	}

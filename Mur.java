@@ -7,7 +7,6 @@ public class Mur {
 
 	public Mur() {
 		this.mur = new ArrayList();
-		this.mur.add(new char[5]);
 	}
 
 	public void ajoutLigne() {
@@ -19,6 +18,9 @@ public class Mur {
 	}
 
 	public void setMur(int x, int y, String valeur) {
+		while (y > mur.size() - 2) {
+			this.ajoutLigne();
+		}
 		char test[] = mur.get(y);
 		test[x] = valeur.charAt(0);
 		mur.set(y, test);
