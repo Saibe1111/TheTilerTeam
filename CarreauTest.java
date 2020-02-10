@@ -10,10 +10,14 @@ class CarreauTest {
 
 	@Test
 	void test() {
-		ArrayList<Carreau> carreauxTest = FonctionCarreau.getCarreaux();
-		FonctionCarreau.MettreLettreEnMaj(carreauxTest);
-		assertEquals(carreauxTest.get(0).getHauteur(), 1);
-		assertEquals(carreauxTest.get(0).getLargeur(), 1);
-		assertEquals(carreauxTest.get(0).getLettre(), 'A');
+		ArrayList<Carreau> carreauxBleu = Carreau.getCarreaux();
+		ArrayList<Carreau> carreauxRouge = Carreau.getCarreaux();
+		Carreau.MettreLettreEnMaj(carreauxRouge);
+		assertEquals(carreauxRouge.get(0).getHauteur(), 1);
+		assertEquals(carreauxRouge.get(0).getLargeur(), 1);
+		assertEquals(carreauxRouge.get(0).getLettre(), 'A');
+		for (Carreau c : carreauxBleu) {
+			System.out.println(c.AfficherCarreau());
+		}
 	}
 }

@@ -8,8 +8,10 @@ class CarteTest {
 
 	@Test
 	void test() {
-		ArrayList<Carte> paquetCarte = FonctionCarte.getCarte();
-
+		ArrayList<Carte> paquetCarte = Carte.getCarte();
+		for (Carte p : paquetCarte) {
+			System.out.println(p.AfficherCarte());
+		}
 	}
 
 }
