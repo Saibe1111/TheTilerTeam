@@ -1,31 +1,26 @@
 package fr.thetilerteam;
 
-import java.util.ArrayList;
+public class ANCIENMur {
+	private char[][] mur;
 
-public class Mur {
-	private ArrayList<char[]> mur;
-
-	public Mur() {
-		this.mur = new ArrayList();
-		this.mur.add(new char[5]);
-	}
-
-	public void ajoutLigne() {
-		this.mur.add(new char[5]);
+	public ANCIENMur() {
+		this.mur = new char[5][12];
 	}
 
 	public char getMur(int x, int y) {
-		return mur.get(y)[x];
+		return this.mur[x][y];
 	}
 
 	public void setMur(int x, int y, String valeur) {
-		char test[] = mur.get(y);
-		test[x] = valeur.charAt(0);
-		mur.set(y, test);
+		this.mur[x][y] = valeur.charAt(0);
 	}
 
 	public int tailleXTableau() {
-		return this.mur.get(0).length;
+		return this.mur.length;
+	}
+
+	public int tailleYTableau() {
+		return this.mur[0].length;
 	}
 
 	// STRING QUI PERMET D'AFFICHER LE TABLEAU OU ON VEUT
@@ -37,7 +32,7 @@ public class Mur {
 
 		StringBuilder sb = new StringBuilder();
 
-		for (int j = this.mur.size() - 1; -1 < j; --j) {
+		for (int j = this.tailleYTableau() - 1; -1 < j; --j) {
 
 			if (j < 10)
 				sb.append(" " + j);

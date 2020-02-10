@@ -9,7 +9,7 @@ public class Appli {
 		ArrayList<Carreau> carreauxBleu = Carreau.getCarreaux();
 		ArrayList<Carreau> carreauxRouge = Carreau.getCarreaux();
 		Carreau.MettreLettreEnMaj(carreauxRouge);
-		ArrayList<Carte> paquetCarte = Carte.getCarte();
+		ArrayList<Paquet> paquetCarte = Paquet.getCarte();
 
 	}
 

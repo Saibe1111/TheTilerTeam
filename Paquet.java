@@ -3,13 +3,13 @@ package fr.thetilerteam;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Carte {
+public class Paquet {
 	String nomCarte;
 	char TypeCarte;
 
 	// DEFAULT
 
-	public Carte(String nom, char type) {
+	public Paquet(String nom, char type) {
 		this.nomCarte = nom;
 		this.TypeCarte = type;
 	}
@@ -22,7 +22,7 @@ public class Carte {
 
 	// PERMET DE STOCKER LES CARTES DE CONFIG
 
-	public static ArrayList<Carte> getCarte() {
+	public static ArrayList<Paquet> getCarte() {
 		// ici on spécifie le nombre de carte, leur appélation et leur dénomination pour
 		// le programme
 		// on peut en ajouter, en supprimer, changer les appélation.
@@ -30,10 +30,10 @@ public class Carte {
 				{ String.valueOf(5), "Taille 1", "1" }, { String.valueOf(5), "Taille 2", "2" },
 				{ String.valueOf(5), "Taille 3", "3" } };
 		// on construit la liste de carte
-		ArrayList<Carte> carte = new ArrayList<>();
+		ArrayList<Paquet> carte = new ArrayList<>();
 		for (String[] taille : tailles)
 			for (int i = 0; i < Integer.parseInt(taille[0]); ++i)
-				carte.add(new Carte(taille[1], taille[2].charAt(0)));
+				carte.add(new Paquet(taille[1], taille[2].charAt(0)));
 		// On mélange les cartes
 		Collections.shuffle(carte);
 		// on renvoie la liste des cartes
@@ -42,7 +42,7 @@ public class Carte {
 
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
 
-	public static ArrayList<Carreau> MettreLettreEnMaj(ArrayList<Carreau> Carreau) {
+	public ArrayList<Carreau> MettreLettreEnMaj(ArrayList<Carreau> Carreau) {
 		for (Carreau car : Carreau)
 			car.MettreLettreEnMaj();
 		return Carreau;

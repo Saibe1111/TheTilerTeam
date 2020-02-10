@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-class CarteTest {
+class PaquetTest {
 
 	@Test
 	void test() {
-		ArrayList<Carte> paquetCarte = Carte.getCarte();
-		for (Carte p : paquetCarte) {
+		ArrayList<Paquet> paquetCarte = Paquet.getCarte();
+		for (Paquet p : paquetCarte) {
 			System.out.println(p.AfficherCarte());
 		}
 	}

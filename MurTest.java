@@ -6,18 +6,19 @@ class MurTest {
 
 	@Test
 	void test() {
-
 		System.out.println();
 		System.out.println();
 		System.out.println();
 		System.out.println();
 		System.out.println();
+		// FonctionMur.afficherMur(mur);
 
 		Mur mur = new Mur();
-		mur.setMur(1, 10, "c");
-		mur.setMur(2, 2, "c");
-		//FonctionMur.afficherMur(mur);
+
+		mur.ajoutLigne();
+		mur.setMur(4, 0, "a");
 		System.out.println(mur.ToStringMur());
+
 	}
 
 }
