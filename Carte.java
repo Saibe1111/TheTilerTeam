@@ -13,7 +13,7 @@ public class Carte {
 
 	// TEMPORAIRE POUR TEST
 
-	public String AfficherCarte() {
+	public String afficherCarte() {
 		return this.nomCarte + " " + this.TypeCarte;
 	}
 

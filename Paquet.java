@@ -25,18 +25,18 @@ public class Paquet {
 				Paquet.paquet.add(new Carte(taille[1], taille[2].charAt(0)));
 
 		// ON MELANGE LES CARTES
-		Melanger();
+		melanger();
 
 	}
 
 	// POUR MELANGER L'ARRAYLIST
 
-	public static void Melanger() {
+	public static void melanger() {
 		Collections.shuffle(Paquet.paquet);
 	}
 
 	// PIOCHE
-	public static Carte Piocher() {
+	public static Carte piocher() {
 		Carte c = Paquet.paquet.get(0);
 		Paquet.paquet.remove(0);
 		return c;

@@ -1,7 +1,5 @@
 package fr.thetilerteam;
 
-import java.util.ArrayList;
-
 public class Carreau {
 
 	private int hauteur;
@@ -46,48 +44,54 @@ public class Carreau {
 		this.lettre = lettre;
 	}
 
-	// TEMPORAIRE POUR TEST
-
-	public String AfficherCarreau() {
-		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();
-	}
-
 	// CARREAU DE TAILLE N
 
-	public boolean CarreauTailleN(int n) {
+	public boolean carreauTailleN(int n) {
 		return n == this.getLargeur() || n == this.getHauteur();
+	}
+
+	// TEMPORAIRE POUR TEST
+
+	public String afficherCarreau() {
+		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();
 	}
 
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
 
-	public void MettreLettreEnMaj() {
+	public void mettreLettreEnMaj() {
 		this.lettre = Character.toUpperCase(this.lettre);
 	}
 
-	// PERMET DE STOCKER LES CARREAUX DE CONFIG
+	public boolean testCareau(char c) {
+		switch (c) {
+		case 'B':
+			if (Character.isUpperCase(this.lettre))
+				return false;
+			else
+				return true;
+		case 'R':
+			if (Character.isUpperCase(this.lettre))
+				return true;
+			else
+				return false;
+		case '1':
+			if (this.carreauTailleN(1))
+				return true;
+			else
+				return false;
+		case '2':
+			if (this.carreauTailleN(1))
+				return true;
+			else
+				return false;
+		case '3':
+			if (this.carreauTailleN(1))
+				return true;
+			else
+				return false;
 
-	public static ArrayList<Carreau> getCarreaux() {
-		// ici on spécifie la lettre du premier carreau,
-		// les autres prendront les lettres qui suivent
-		char c = 'a';
-		// ici on spécifie la taille de chaque carreau
-		// on peut en ajouter, en supprimer, changer les tailles,
-		// ou même changer l'ordre (et donc changer la lettre)
-		int[][] tailles = { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 3, 1 }, { 3, 2 }, { 3, 3 } };
-		// on construit la liste de carreaux
-		ArrayList<Carreau> carreaux = new ArrayList<>();
-		for (int[] taille : tailles)
-			carreaux.add(new Carreau(taille[0], taille[1], c++));
-		return carreaux;
+		}
+		return false;
 
 	}
-
-	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE)
-
-	public static ArrayList<Carreau> MettreLettreEnMaj(ArrayList<Carreau> Carreau) {
-		for (Carreau car : Carreau)
-			car.MettreLettreEnMaj();
-		return Carreau;
-	}
-
 }

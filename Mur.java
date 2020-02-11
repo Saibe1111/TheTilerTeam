@@ -28,9 +28,17 @@ public class Mur {
 		return this.mur.get(0).length;
 	}
 
+	public void placerCarreauSurMur(int x, int y, Carreau c) {
+		for (int i = 0; i < c.getLargeur(); ++i) {
+			for (int j = 0; j < c.getHauteur(); ++j) {
+				this.setMur(x + i, y + j, c.getLettre());
+			}
+		}
+	}
+
 	// STRING QUI PERMET D'AFFICHER LE TABLEAU OU ON VEUT
 
-	public String ToStringMur() {
+	public String toStringMur() {
 
 		// utilisation StringBuilder
 		// https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html
@@ -45,10 +53,7 @@ public class Mur {
 				sb.append(j);
 			for (int i = 0; i < this.tailleXTableau(); i++) {
 
-				if (this.getMur(i, j) != 0) {
-					sb.append(this.getMur(i, j));
-				} else
-					sb.append(" ");
+				sb.append(this.getMur(i, j));
 			}
 
 			sb.append("\n");
