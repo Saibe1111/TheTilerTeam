@@ -47,10 +47,10 @@ public class Mur {
 
 		for (int j = this.mur.size() - 1; -1 < j; --j) {
 
-			if (j < 10)
-				sb.append(" " + j);
+			if (j < 9)
+				sb.append(" " + (j + 1));
 			else
-				sb.append(j);
+				sb.append((j + 1));
 			for (int i = 0; i < this.tailleXTableau(); i++) {
 
 				sb.append(this.getMur(i, j));
