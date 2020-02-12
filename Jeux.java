@@ -87,17 +87,9 @@ public class Jeux {
 		return sb.toString();
 	}
 
-	public void retirerCarreaux(int index, char couleur) {
-		switch (couleur) {
-		case 'R':
-			carreauxRouge.retirerCareauListe(index);
-			break;
-
-		case 'B':
-			carreauxBleu.retirerCareauListe(index);
-			break;
-		}
-
+	public void retirerCarreaux(char lettre) {
+		carreauxBleu.retirerCareauListe(lettre);
+		carreauxRouge.retirerCareauListe(lettre);
 	}
 
 	public void placerCarreau(char Lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {

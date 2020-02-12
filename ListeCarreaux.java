@@ -38,8 +38,12 @@ public class ListeCarreaux {
 		return this.listeCarreaux.size();
 	}
 
-	public void retirerCareauListe(int index) {
-		this.listeCarreaux.remove(index);
+	public void retirerCareauListe(char lettre) {
+		for (int i = 0; i < this.nbCarreaux(); ++i) {
+			if (this.getCarreau(i).getLettre() == lettre) {
+				this.listeCarreaux.remove(i);
+			}
+		}
 	}
 
 }
