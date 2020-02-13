@@ -80,12 +80,12 @@ public class Carreau {
 			else
 				return false;
 		case '2':
-			if (this.carreauTailleN(1))
+			if (this.carreauTailleN(2))
 				return true;
 			else
 				return false;
 		case '3':
-			if (this.carreauTailleN(1))
+			if (this.carreauTailleN(3))
 				return true;
 			else
 				return false;

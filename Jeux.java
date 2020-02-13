@@ -9,20 +9,26 @@ public class Jeux {
 	private ListeCarreaux carreauxBleu;
 	private Mur mur;
 
+	// CONSTRUCTEUR QUI PERMET D'INITALISER UNE PARTIE
+
 	public Jeux() {
+		// ON DECLARE: UNE PAQUET, LES CARREAUXROUGES, LES CARREAUX BLEU ET NOTRE
+		// PLATEAU (MUR)
 		paquet = new Paquet();
 		carreauxRouge = new ListeCarreaux();
 		carreauxRouge.MettreLettreEnMaj();
 		carreauxBleu = new ListeCarreaux();
 		mur = new Mur();
+		// ON GENERE UN NOMBRE ALEATOIRE
 		Random r = new Random();
+		// ON STOCK CE NOMBRE ALEATOIRE COMPRIS ENTRE 0 ET 3 DANS UNE VARIABLE VALEUR
 		int valeur = r.nextInt(4);
+		// CHAQUE NUMERO CORESPOND A UNE POSITION DU CARREAU VERT
 		switch (valeur) {
 		case 0:
 			Carreau carreauVert = new Carreau(1, 3, 'x');
 			mur.placerCarreauSurMur(0, 0, carreauVert);
 			break;
-
 		case 1:
 			Carreau carreauVert1 = new Carreau(3, 1, 'x');
 			mur.placerCarreauSurMur(0, 0, carreauVert1);
@@ -38,11 +44,15 @@ public class Jeux {
 		}
 	}
 
+	// PERMET DE RECUPERER LE MUR
+
 	public Mur getMur() {
 		return mur;
 	}
 
-	public ArrayList<Carreau> carreauJouable(Carte carte) {
+	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
+
+	public ArrayList<Carreau> carreauxJouables(Carte carte) {
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<Carreau>();
 		for (int i = 0; i < carreauxBleu.nbCarreaux(); ++i) {
 			if (carreauxBleu.getCarreau(i).testCareau(carte.TypeCarte)) {
@@ -57,6 +67,9 @@ public class Jeux {
 		return listeCarreauJouable;
 
 	}
+
+	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
+	// PRECEDENTE
 
 	public String toStringCarreauJouable(ArrayList<Carreau> listeCarreauJouable) {
 		StringBuilder sb = new StringBuilder();
@@ -86,6 +99,8 @@ public class Jeux {
 
 		return sb.toString();
 	}
+
+	// PERMET DE RETIRE IN CARREAU
 
 	public void retirerCarreaux(char lettre) {
 		carreauxBleu.retirerCareauListe(lettre);
