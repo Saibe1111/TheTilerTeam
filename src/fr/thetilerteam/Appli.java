@@ -18,7 +18,7 @@ public class Appli {
 			// ON PIOCHE UNE CARTE
 			Carte c = j.getPaquet().piocher();
 			// ON AFFICHE LA CARTE PIOCHEE
-			System.out.println("Carte piochée: " + c.nomCarte + "\nVoici la liste des carreaux utilisable:");
+			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
 			System.out.println(j.toStringCarreauJouable(j.carreauxJouables(c)));
 			// CHANGER LE SWITCH PAR DES TEST CAR IMPOSSIBLE, PB DE GESTION DE LA POSE DE

@@ -63,12 +63,12 @@ public class Jeux {
 	public ArrayList<Carreau> carreauxJouables(Carte carte) {
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<Carreau>();
 		for (int i = 0; i < carreauxBleu.nbCarreaux(); ++i) {
-			if (carreauxBleu.getCarreau(i).testCareau(carte.TypeCarte)) {
+			if (carreauxBleu.getCarreau(i).testCareau(carte.getTypeCarte())) {
 				listeCarreauJouable.add(this.carreauxBleu.getCarreau(i));
 			}
 		}
 		for (int i = 0; i < carreauxRouge.nbCarreaux(); ++i) {
-			if (carreauxRouge.getCarreau(i).testCareau(carte.TypeCarte)) {
+			if (carreauxRouge.getCarreau(i).testCareau(carte.getTypeCarte())) {
 				listeCarreauJouable.add(this.carreauxRouge.getCarreau(i));
 			}
 		}
