@@ -10,7 +10,7 @@ class JeuxTest {
 	void test() {
 		Jeux j = new Jeux();
 		System.out.println(j.getMur().toStringMur() + "\n");
-		Carte c = Paquet.piocher();
+		Carte c = j.getPaquet().piocher();
 		System.out.println("Carte pioché " + c.nomCarte + "\n");
 		System.out.println(j.toStringCarreauJouable(j.carreauxJouables(c)));
 		System.out.println("Quel carte voulez vous jouer (Lettre) et où (Position coin droit) ? ");

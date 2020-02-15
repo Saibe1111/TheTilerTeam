@@ -24,13 +24,20 @@ public class Mur {
 		mur.get(y)[x] = valeur;
 	}
 
-	public int tailleXTableau() {
+	private int tailleXTableau() {
 		return this.mur.get(0).length;
 	}
 	
-	public int tailleYTableau() {
+	private int tailleYTableau() {
 		return this.mur.size();
 	}
+	
+	
+	public boolean appartientAuMur(int x, int y) {
+		return (x > 0 && x < this.tailleXTableau() + 1 && y > 0 && y < this.tailleYTableau() + 1 );
+	}
+	
+	
 
 	public void placerCarreauSurMur(int x, int y, Carreau c) {
 		for (int i = 0; i < c.getLargeur(); ++i) {
@@ -49,7 +56,7 @@ public class Mur {
 
 		StringBuilder sb = new StringBuilder();
 
-		for (int j = this.mur.size() - 1; -1 < j; --j) {
+		for (int j = this.tailleYTableau() - 1; -1 < j; --j) {
 
 			if (j < 9)
 				sb.append(" " + (j + 1));
@@ -67,6 +74,20 @@ public class Mur {
 			sb.append(i);
 
 		return sb.toString();
+	}
+
+	public int nombreNiveauComplet() {
+		int nbNiveauComplet = 0;
+		for(int y = 0; y < this.tailleYTableau(); ++y) {
+			boolean Complet = true;
+			for(int x = 0; x < this.tailleXTableau(); ++x) {
+				if (mur.get(y)[x] == 0) 
+					Complet = false;
+			}
+			if (Complet)
+				nbNiveauComplet++;
+		}
+		return nbNiveauComplet;
 	}
 
 }

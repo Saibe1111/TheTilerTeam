@@ -8,12 +8,14 @@ public class Jeux {
 	private ListeCarreaux carreauxRouge;
 	private ListeCarreaux carreauxBleu;
 	private Mur mur;
+	private Score score;
 
 	// CONSTRUCTEUR QUI PERMET D'INITALISER UNE PARTIE
 
 	public Jeux() {
 		// ON DECLARE: UNE PAQUET, LES CARREAUXROUGES, LES CARREAUX BLEU ET NOTRE
 		// PLATEAU (MUR)
+		score = new Score();
 		paquet = new Paquet();
 		carreauxRouge = new ListeCarreaux();
 		carreauxRouge.MettreLettreEnMaj();
@@ -50,6 +52,12 @@ public class Jeux {
 		return mur;
 	}
 
+	// PERMET DE RECUPERER LE MUR
+
+	public Paquet getPaquet() {
+		return paquet;
+	}
+	
 	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
 
 	public ArrayList<Carreau> carreauxJouables(Carte carte) {
@@ -67,6 +75,16 @@ public class Jeux {
 		return listeCarreauJouable;
 
 	}
+	public boolean lettreJouable(ArrayList<Carreau> listeCarreauJouable, char lettre) {
+		boolean test = false;
+		for (int i = 0; i < listeCarreauJouable.size(); i++)
+			if (listeCarreauJouable.get(i).getLettre() == lettre)
+				test = true;
+				
+		return test;
+	}
+	
+	
 
 	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
 	// PRECEDENTE
@@ -107,9 +125,15 @@ public class Jeux {
 		carreauxRouge.retirerCareauListe(lettre);
 	}
 
-	public void placerCarreau(char Lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
+	public void placerCarreau(char lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
 		for (int i = 0; i < listeCarreauJouable.size(); i++)
-			if (listeCarreauJouable.get(i).getLettre() == Lettre)
+			if (listeCarreauJouable.get(i).getLettre() == lettre)
 				mur.placerCarreauSurMur(positionX, positionY, listeCarreauJouable.get(i));
+				// ON RETIRE LE CARREAU JOUER DE LA LISTE
+				this.retirerCarreaux(lettre);
+	}
+
+	public int getScore() {
+		return score.getScore(carreauxRouge, carreauxBleu, paquet, mur);
 	}
 }

@@ -16,7 +16,7 @@ public class Appli {
 			// ON AFFICHE LE MUR (ZONE A CARRELER)
 			System.out.println(j.getMur().toStringMur() + "\n");
 			// ON PIOCHE UNE CARTE
-			Carte c = Paquet.piocher();
+			Carte c = j.getPaquet().piocher();
 			// ON AFFICHE LA CARTE PIOCHEE
 			System.out.println("Carte piochée: " + c.nomCarte + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
@@ -27,13 +27,12 @@ public class Appli {
 			boolean commandeNonValide = true;
 			while(commandeNonValide) {	
 				if (test.equals("next")) {
-
-					System.out.println("Next ok");
+					j.getPaquet().ajouteCarteEcartee();
 					commandeNonValide = false;
 					
 				} else if (test.equals("stop")) {
 
-					System.out.println("Merci d'avoir joué :) \nVotre score: " + "Score");
+					System.out.println("Merci d'avoir joué :) \nVotre score: " +  j.getScore() + " points !");
 				// ON ARRETE LES BOUCLES
 					commandeNonValide = false;
 					FinJeux = false;
@@ -41,14 +40,16 @@ public class Appli {
 				} else {
 					int X = sc.nextInt();				
 					int Y = sc.nextInt();
-					if (X > 0 && X < j.getMur().tailleXTableau() + 1 && Y > 0 && Y < j.getMur().tailleYTableau() + 1) {
+					//ON VERIFIE SI LA  COMMANDE EST POSSIBLE
+					if (j.getMur().appartientAuMur(X, Y) && j.lettreJouable(j.carreauxJouables(c), test.charAt(0))) {
 						// ON PLACE LE CARREAU
 						j.placerCarreau(test.charAt(0), X - 1 , Y - 1, j.carreauxJouables(c));
 						// ON RETIRE LE CARREAU JOUER DE LA LISTE
-						j.retirerCarreaux(test.charAt(0));
+						//j.retirerCarreaux(test.charAt(0));
 						commandeNonValide = false;
 					}else {
 						System.out.println("Commande inconnue !!");
+						test = sc.next();
 					}
 				}
 			}
