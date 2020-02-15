@@ -12,17 +12,32 @@ public class Appli {
 		// ON DECLARE UN NOUVEAU SCANNER
 		Scanner sc = new Scanner(System.in);
 		while (FinJeux) {
-			// ON LANCE UNE ACTION EN FONCTION DE LA SAISIE DU JOUEUR
-			switch (sc.next()) {
-			case "next":
-				// ON AFFICHE LE MUR (ZONE A CARRELER)
-				System.out.println(j.getMur().toStringMur() + "\n");
-				// ON PIOCHE UNE CARTE
-				Carte c = Paquet.piocher();
-				// ON AFFICHE LA CARTE PIOCHEE
-				System.out.println("Carte piochée: " + c.nomCarte + "\nVoici la liste des carreaux utilisable:");
-				// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
-				System.out.println(j.toStringCarreauJouable(j.carreauxJouables(c)));
+
+			// ON AFFICHE LE MUR (ZONE A CARRELER)
+			System.out.println(j.getMur().toStringMur() + "\n");
+			// ON PIOCHE UNE CARTE
+			Carte c = Paquet.piocher();
+			// ON AFFICHE LA CARTE PIOCHEE
+			System.out.println("Carte piochée: " + c.nomCarte + "\nVoici la liste des carreaux utilisable:");
+			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
+			System.out.println(j.toStringCarreauJouable(j.carreauxJouables(c)));
+			// CHANGER LE SWITCH PAR DES TEST CAR IMPOSSIBLE, PB DE GESTION DE LA POSE DE
+			// CARREAUX
+			String test = sc.next();
+			if (test.equals("next")) {
+
+				System.out.println("Next ok");
+
+			} else if (test.equals("stop")) {
+
+				System.out.println("Merci d'avoir joué :) \nVotre score: " + "Score");
+				// ON ARRETE LA BOUCLE
+				FinJeux = false;
+
+			} else {
+
+				System.out.println("Commande inconnue !!");
+
 				// ANNONCE DE LA DEMANDE DE SAISIE
 				System.out.println(
 						"Quel carte voulez vous jouer (Lettre) et où (X, Y de position coin bas gauche) ? ou tapez \"ecartée\" ");
@@ -32,18 +47,9 @@ public class Appli {
 				j.placerCarreau(lettre, sc.nextInt(), sc.nextInt(), j.carreauxJouables(c));
 				// ON RETIRE LE CARREAU JOUER DE LA LISTE
 				j.retirerCarreaux(lettre);
-				break;
-			case "stop":
-				System.out.println("Merci d'avoir joué :) \nVotre score: " + "Score");
-				// ON ARRETE LA BOUCLE
-				FinJeux = false;
-				break;
-			default:
-				// ON AFFICHE UN MESSAGE D'ERREUR
-				System.out.println(
-						"Commande inconnue \nLes commandes disponibles sont:\nstop : Affiche le score et arrete la partie \nnext : passer au tour suivant");
-				break;
+
 			}
+
 		}
 		// ON FERME LE SCANNER
 		sc.close();
