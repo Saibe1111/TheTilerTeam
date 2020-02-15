@@ -24,30 +24,33 @@ public class Appli {
 			// CHANGER LE SWITCH PAR DES TEST CAR IMPOSSIBLE, PB DE GESTION DE LA POSE DE
 			// CARREAUX
 			String test = sc.next();
-			if (test.equals("next")) {
+			boolean commandeNonValide = true;
+			while(commandeNonValide) {	
+				if (test.equals("next")) {
 
-				System.out.println("Next ok");
+					System.out.println("Next ok");
+					commandeNonValide = false;
+					
+				} else if (test.equals("stop")) {
 
-			} else if (test.equals("stop")) {
+					System.out.println("Merci d'avoir joué :) \nVotre score: " + "Score");
+				// ON ARRETE LES BOUCLES
+					commandeNonValide = false;
+					FinJeux = false;
 
-				System.out.println("Merci d'avoir joué :) \nVotre score: " + "Score");
-				// ON ARRETE LA BOUCLE
-				FinJeux = false;
-
-			} else {
-
-				System.out.println("Commande inconnue !!");
-
-				// ANNONCE DE LA DEMANDE DE SAISIE
-				System.out.println(
-						"Quel carte voulez vous jouer (Lettre) et où (X, Y de position coin bas gauche) ? ou tapez \"ecartée\" ");
-				// ON STOCK LA LETTRE ENTREE
-				char lettre = sc.next().charAt(0);
-				// ON PLACE LE CARREAU
-				j.placerCarreau(lettre, sc.nextInt(), sc.nextInt(), j.carreauxJouables(c));
-				// ON RETIRE LE CARREAU JOUER DE LA LISTE
-				j.retirerCarreaux(lettre);
-
+				} else {
+					int X = sc.nextInt();				
+					int Y = sc.nextInt();
+					if (X > 0 && X < j.getMur().tailleXTableau() + 1 && Y > 0 && Y < j.getMur().tailleYTableau() + 1) {
+						// ON PLACE LE CARREAU
+						j.placerCarreau(test.charAt(0), X - 1 , Y - 1, j.carreauxJouables(c));
+						// ON RETIRE LE CARREAU JOUER DE LA LISTE
+						j.retirerCarreaux(test.charAt(0));
+						commandeNonValide = false;
+					}else {
+						System.out.println("Commande inconnue !!");
+					}
+				}
 			}
 
 		}

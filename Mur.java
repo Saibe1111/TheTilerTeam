@@ -27,6 +27,10 @@ public class Mur {
 	public int tailleXTableau() {
 		return this.mur.get(0).length;
 	}
+	
+	public int tailleYTableau() {
+		return this.mur.size();
+	}
 
 	public void placerCarreauSurMur(int x, int y, Carreau c) {
 		for (int i = 0; i < c.getLargeur(); ++i) {
