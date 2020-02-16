@@ -13,7 +13,7 @@ public class Appli {
 		boolean FinJeux = true;
 		Jeux j = new Jeux();
 		// ON DECLARE UN NOUVEAU SCANNER
-		Scanner sc = new Scanner(System.in);
+
 		while (FinJeux) {
 
 			// ON AFFICHE LE MUR (ZONE A CARRELER)
@@ -24,8 +24,8 @@ public class Appli {
 			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
 			System.out.println(j.toStringCarreauJouable(j.carreauxJouable(c)));
-			// CHANGER LE SWITCH PAR DES TEST CAR IMPOSSIBLE, PB DE GESTION DE LA POSE DE
-			// CARREAUX
+
+			Scanner sc = new Scanner(System.in);
 			String test = sc.next();
 			boolean commandeNonValide = true;
 			while(commandeNonValide) {	
@@ -68,11 +68,11 @@ public class Appli {
 						test = sc.next();
 					}
 				}
-			}
+			} // ON FERME LE SCANNER
+			sc.close();
 
 		}
-		// ON FERME LE SCANNER
-		sc.close();
+
 	}
 
 }
