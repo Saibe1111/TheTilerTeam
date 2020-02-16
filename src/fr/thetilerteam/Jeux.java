@@ -2,6 +2,7 @@ package fr.thetilerteam;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Jeux {
 	private Paquet paquet;
@@ -141,9 +142,48 @@ public class Jeux {
 		return null;
 	}
 	
-	
-
 	public int getScore() {
 		return score.getScore(carreauxRouge, carreauxBleu, paquet, mur);
 	}
+
+	public String test(Carte c, Scanner sc) throws Exception {
+		String test = sc.next();
+		if (test.equals("next")) {
+				getPaquet().ajouteCarteEcartee();
+			return ("Carte écartée");
+			} else if (test.equals("stop")) {
+			return ("Merci d'avoir joué :) \nVotre score: " + getScore() + " points !");
+			} else {
+				int X = sc.nextInt();
+				int Y = sc.nextInt();
+				// ON VERIFIE SI LA COMMANDE EST POSSIBLE
+				if (getMur().appartientAuMur(X, Y)) {
+					if (lettreJouable(carreauxJouable(c), test.charAt(0))) {
+						if (getMur().caseVide(X - 1, Y - 1,
+								retrouverCarreau(test.charAt(0), X, Y, carreauxJouable(c)))) {
+							// ON PLACE LE CARREAU
+							try {
+								placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
+								// ON RETIRE LE CARREAU JOUER DE LA LISTE
+								retirerCarreaux(test.charAt(0));
+							return ("Carreaux placée");
+							} catch (ArrayIndexOutOfBoundsException e) {
+							// return ("Impossible vous sortez du tableau !");
+							throw new Exception("Impossible vous sortez du tableau !");
+							}
+						} else {
+						throw new Exception("La case n'est pas vide !");
+						// return ("La case n'est pas vide !");
+						}
+					} else {
+					// return ("Lettre pas dans la liste !");
+					throw new Exception("Lettre pas dans la liste !");
+					}
+				} else {
+				throw new Exception("La position n'appartient pas au mur !");
+				// return ("La position n'appartient pas au mur !");
+				}
+			}
+	}
+
 }
