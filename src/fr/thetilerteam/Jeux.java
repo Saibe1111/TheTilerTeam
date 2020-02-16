@@ -60,7 +60,7 @@ public class Jeux {
 	
 	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
 
-	public ArrayList<Carreau> carreauxJouables(Carte carte) {
+	public ArrayList<Carreau> carreauxJouable(Carte carte) {
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<Carreau>();
 		for (int i = 0; i < carreauxBleu.nbCarreaux(); ++i) {
 			if (carreauxBleu.getCarreau(i).testCareau(carte.getTypeCarte())) {
@@ -75,6 +75,8 @@ public class Jeux {
 		return listeCarreauJouable;
 
 	}
+	
+	
 	public boolean lettreJouable(ArrayList<Carreau> listeCarreauJouable, char lettre) {
 		boolean test = false;
 		for (int i = 0; i < listeCarreauJouable.size(); i++)
@@ -126,12 +128,20 @@ public class Jeux {
 	}
 
 	public void placerCarreau(char lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
+		
+		mur.placerCarreauSurMur(positionX, positionY, this.retrouverCarreau(lettre, positionX, positionY, listeCarreauJouable));
+		// ON RETIRE LE CARREAU JOUER DE LA LISTE
+		this.retirerCarreaux(lettre);
+	}
+	
+	public Carreau retrouverCarreau(char lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
 		for (int i = 0; i < listeCarreauJouable.size(); i++)
 			if (listeCarreauJouable.get(i).getLettre() == lettre)
-				mur.placerCarreauSurMur(positionX, positionY, listeCarreauJouable.get(i));
-				// ON RETIRE LE CARREAU JOUER DE LA LISTE
-				this.retirerCarreaux(lettre);
+				return listeCarreauJouable.get(i);
+		return null;
 	}
+	
+	
 
 	public int getScore() {
 		return score.getScore(carreauxRouge, carreauxBleu, paquet, mur);

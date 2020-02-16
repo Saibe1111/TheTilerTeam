@@ -13,7 +13,6 @@ class CarteTest {
 		// System.out.println(Paquet.AfficherCarte());
 		// }
 		Paquet p = new Paquet();
-		System.out.println(p.piocher().afficherCarte());
 
 	}
 }

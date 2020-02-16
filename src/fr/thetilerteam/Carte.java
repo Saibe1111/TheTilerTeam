@@ -19,10 +19,4 @@ public class Carte {
 		this.TypeCarte = type;
 	}
 
-	// TEMPORAIRE POUR TEST
-
-	public String afficherCarte() {
-		return this.nomCarte + " " + this.TypeCarte;
-	}
-
 }

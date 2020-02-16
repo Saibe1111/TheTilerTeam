@@ -1,6 +1,9 @@
-package fr.thetilerteam;
+package fr.thetilerteam.appli;
 
 import java.util.Scanner;
+
+import fr.thetilerteam.Carte;
+import fr.thetilerteam.Jeux;
 
 public class Appli {
 
@@ -20,7 +23,7 @@ public class Appli {
 			// ON AFFICHE LA CARTE PIOCHEE
 			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
-			System.out.println(j.toStringCarreauJouable(j.carreauxJouables(c)));
+			System.out.println(j.toStringCarreauJouable(j.carreauxJouable(c)));
 			// CHANGER LE SWITCH PAR DES TEST CAR IMPOSSIBLE, PB DE GESTION DE LA POSE DE
 			// CARREAUX
 			String test = sc.next();
@@ -29,26 +32,39 @@ public class Appli {
 				if (test.equals("next")) {
 					j.getPaquet().ajouteCarteEcartee();
 					commandeNonValide = false;
-					
 				} else if (test.equals("stop")) {
-
 					System.out.println("Merci d'avoir joué :) \nVotre score: " +  j.getScore() + " points !");
 				// ON ARRETE LES BOUCLES
 					commandeNonValide = false;
 					FinJeux = false;
-
 				} else {
 					int X = sc.nextInt();				
-					int Y = sc.nextInt();
+					int Y = sc.nextInt();	
 					//ON VERIFIE SI LA  COMMANDE EST POSSIBLE
-					if (j.getMur().appartientAuMur(X, Y) && j.lettreJouable(j.carreauxJouables(c), test.charAt(0))) {
-						// ON PLACE LE CARREAU
-						j.placerCarreau(test.charAt(0), X - 1 , Y - 1, j.carreauxJouables(c));
-						// ON RETIRE LE CARREAU JOUER DE LA LISTE
-						//j.retirerCarreaux(test.charAt(0));
-						commandeNonValide = false;
+					if (j.getMur().appartientAuMur(X, Y)  ) {
+						if (j.lettreJouable(j.carreauxJouable(c), test.charAt(0))) {
+							if (j.getMur().caseVide(X - 1, Y - 1,
+									j.retrouverCarreau(test.charAt(0), X, Y, j.carreauxJouable(c)))) {
+								// ON PLACE LE CARREAU
+								try {
+									j.placerCarreau(test.charAt(0), X - 1, Y - 1, j.carreauxJouable(c));
+									commandeNonValide = false;
+									// ON RETIRE LE CARREAU JOUER DE LA LISTE
+									j.retirerCarreaux(test.charAt(0));
+								} catch(ArrayIndexOutOfBoundsException e) {
+									System.out.println("Impossible vous sorté du tableau !");
+									test = sc.next();
+								}
+							} else {
+									System.out.println("La case n'est pas vide !");
+									test = sc.next();
+								}
+						} else {
+							System.out.println("Lettre pas dans la liste !");
+							test = sc.next();
+						}
 					}else {
-						System.out.println("Commande inconnue !!");
+						System.out.println("La position n'appartient pas au mur !");
 						test = sc.next();
 					}
 				}

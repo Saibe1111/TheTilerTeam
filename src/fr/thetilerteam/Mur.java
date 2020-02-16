@@ -36,8 +36,6 @@ public class Mur {
 	public boolean appartientAuMur(int x, int y) {
 		return (x > 0 && x < this.tailleXTableau() + 1 && y > 0 && y < this.tailleYTableau() + 1 );
 	}
-	
-	
 
 	public void placerCarreauSurMur(int x, int y, Carreau c) {
 		for (int i = 0; i < c.getLargeur(); ++i) {
@@ -88,6 +86,18 @@ public class Mur {
 				nbNiveauComplet++;
 		}
 		return nbNiveauComplet;
+	}
+
+	public boolean caseVide(int x, int y, Carreau c) {
+			for (int i = 0; i < c.getLargeur(); ++i) {
+				for (int j = 0; j < c.getHauteur(); ++j) {
+					if (this.getMur(x, y) != 0) {
+						return false;
+					}
+				}
+			}
+
+		return true;
 	}
 
 }
