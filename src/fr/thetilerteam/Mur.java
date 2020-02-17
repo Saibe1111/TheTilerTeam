@@ -89,15 +89,77 @@ public class Mur {
 	}
 
 	public boolean caseVide(int x, int y, Carreau c) {
-			for (int i = 0; i < c.getLargeur(); ++i) {
-				for (int j = 0; j < c.getHauteur(); ++j) {
-					if (this.getMur(x, y) != 0) {
+		if (y < this.tailleYTableau()) {
+			for (int i = x; i < x + c.getLargeur(); ++i) {
+				for (int j = y; j < this.tailleYTableau(); ++j) {
+					if (this.getMur(i, j) != 0) {
 						return false;
 					}
 				}
 			}
-
+		} else {
+			for (int i = x; i < x + c.getLargeur(); ++i) {
+				for (int j = y; j < y + c.getHauteur(); ++j) {
+					if (this.getMur(i, j) != 0) {
+						return false;
+					}
+					}
+				}
+		}
 		return true;
+	}
+
+	// Permet de savoir si le carreau est entouré d'un autre carreau
+	public boolean carreauAdjacent(int x, int y, Carreau c) {
+		// ON VERIFIE PAS LA GAUCHE DU TABLEAU SINON ON EN SORTIRAI
+		if (x != 0) {
+			// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
+			if (y + c.getHauteur() < this.tailleYTableau()) {
+				for (int j = y; j < y + c.getHauteur(); ++j)
+					if (this.getMur(x - 1, j) != 0)
+						return true;
+			} else {
+				for (int j = y; j < this.tailleYTableau(); ++j)
+					if (this.getMur(x - 1, j) != 0)
+						return true;
+
+			}
+		}
+		// ON VERIFIE PAS LA DROITE DU TABLEAU SINON ON EN SORTIRAI
+		if (x + c.getLargeur() != this.tailleXTableau()) {
+			if (y + c.getHauteur() < this.tailleYTableau()) {
+				for (int j = y; j < y + c.getHauteur(); ++j)
+					if (this.getMur(x + c.getLargeur(), j) != 0)
+						return true;
+			} else {
+				for (int j = y; j < this.tailleXTableau(); ++j)
+					if (this.getMur(x + c.getLargeur(), j) != 0)
+						return true;
+
+			}
+		}
+		// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
+		if (y != 0) {
+			for (int j = x; j < x + c.getLargeur(); ++j)
+				if (this.getMur(j, y - 1) != 0)
+					return true;
+			// ON REGARDE SI ON A UN CARREAU EN DESSOUS
+		}
+		
+		// IMPOSSIBLE D'AVOIR UN CARREAU AU DESSOUS SINON PROBLEME REGLE Figure 8
+		return false;
+	}
+
+	public boolean carreauReposeSurBase(int x, int y, Carreau c) {
+		// ON REGARDE SI ON A UN CARREAU EN DESSOUS
+		if (y != 0) {
+			for (int j = x; j < x + c.getLargeur(); ++j)
+				if (this.getMur(j, y - 1) == 0)
+					return false;
+
+		}
+		return true;
+
 	}
 
 }

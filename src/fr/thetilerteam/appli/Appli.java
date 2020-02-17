@@ -26,20 +26,19 @@ public class Appli {
 			System.out.println(j.toStringCarreauJouable(j.carreauxJouable(c)));
 			boolean CommandeNonValide = true;
 			while (CommandeNonValide) {
-				String text;
 				try {
-					text = j.test(c, sc);
+					String text = j.commande(c, sc);
 					System.out.println(text);
 					CommandeNonValide = false;
-					if (text.contentEquals("Merci d'avoir joué :)")) {
+					if (text.contains("Merci"))
 						FinJeux = false;
-					}
-
 				} catch (Exception e) {
+					// e.printStackTrace();
 					System.err.println(e.getMessage());
 					CommandeNonValide = true;
 
 				}
+
 			}
 		}
 		sc.close();
