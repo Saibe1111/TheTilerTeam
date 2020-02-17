@@ -1,6 +1,8 @@
-package fr.thetilerteam;
+package fr.thetilerteamTest;
 
 import org.junit.jupiter.api.Test;
+
+import fr.thetilerteam.Paquet;
 
 class CarteTest {
 
@@ -11,10 +13,6 @@ class CarteTest {
 		// System.out.println(Paquet.AfficherCarte());
 		// }
 		Paquet p = new Paquet();
-		System.out.println(Paquet.piocher().afficherCarte());
-		System.out.println(Paquet.piocher().afficherCarte());
-		System.out.println(Paquet.piocher().afficherCarte());
-		System.out.println(Paquet.piocher().afficherCarte());
 
 	}
 }

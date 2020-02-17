@@ -1,20 +1,22 @@
 package fr.thetilerteam;
 
 public class Carte {
-	String nomCarte;
-	char TypeCarte;
+	private String nomCarte;
+	private char TypeCarte;
 
 	// DEFAULT
+
+	public String getNomCarte() {
+		return nomCarte;
+	}
+
+	public char getTypeCarte() {
+		return TypeCarte;
+	}
 
 	public Carte(String nom, char type) {
 		this.nomCarte = nom;
 		this.TypeCarte = type;
-	}
-
-	// TEMPORAIRE POUR TEST
-
-	public String afficherCarte() {
-		return this.nomCarte + " " + this.TypeCarte;
 	}
 
 }

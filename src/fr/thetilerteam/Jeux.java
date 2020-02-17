@@ -2,18 +2,21 @@ package fr.thetilerteam;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Jeux {
 	private Paquet paquet;
 	private ListeCarreaux carreauxRouge;
 	private ListeCarreaux carreauxBleu;
 	private Mur mur;
+	private Score score;
 
 	// CONSTRUCTEUR QUI PERMET D'INITALISER UNE PARTIE
 
 	public Jeux() {
 		// ON DECLARE: UNE PAQUET, LES CARREAUXROUGES, LES CARREAUX BLEU ET NOTRE
 		// PLATEAU (MUR)
+		score = new Score();
 		paquet = new Paquet();
 		carreauxRouge = new ListeCarreaux();
 		carreauxRouge.MettreLettreEnMaj();
@@ -50,22 +53,37 @@ public class Jeux {
 		return mur;
 	}
 
+	// PERMET DE RECUPERER LE MUR
+
+	public Paquet getPaquet() {
+		return paquet;
+	}
+
 	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
 
-	public ArrayList<Carreau> carreauxJouables(Carte carte) {
+	public ArrayList<Carreau> carreauxJouable(Carte carte) {
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<Carreau>();
 		for (int i = 0; i < carreauxBleu.nbCarreaux(); ++i) {
-			if (carreauxBleu.getCarreau(i).testCareau(carte.TypeCarte)) {
+			if (carreauxBleu.getCarreau(i).testCareau(carte.getTypeCarte())) {
 				listeCarreauJouable.add(this.carreauxBleu.getCarreau(i));
 			}
 		}
 		for (int i = 0; i < carreauxRouge.nbCarreaux(); ++i) {
-			if (carreauxRouge.getCarreau(i).testCareau(carte.TypeCarte)) {
+			if (carreauxRouge.getCarreau(i).testCareau(carte.getTypeCarte())) {
 				listeCarreauJouable.add(this.carreauxRouge.getCarreau(i));
 			}
 		}
 		return listeCarreauJouable;
 
+	}
+
+	private boolean lettreJouable(ArrayList<Carreau> listeCarreauJouable, char lettre) {
+		boolean test = false;
+		for (int i = 0; i < listeCarreauJouable.size(); i++)
+			if (listeCarreauJouable.get(i).getLettre() == lettre)
+				test = true;
+
+		return test;
 	}
 
 	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
@@ -107,9 +125,77 @@ public class Jeux {
 		carreauxRouge.retirerCareauListe(lettre);
 	}
 
-	public void placerCarreau(char Lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
-		for (int i = 0; i < listeCarreauJouable.size(); i++)
-			if (listeCarreauJouable.get(i).getLettre() == Lettre)
-				mur.placerCarreauSurMur(positionX, positionY, listeCarreauJouable.get(i));
+	public void placerCarreau(char lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
+
+		mur.placerCarreauSurMur(positionX, positionY, this.retrouverCarreau(lettre, listeCarreauJouable));
+		// ON RETIRE LE CARREAU JOUER DE LA LISTE
+		this.retirerCarreaux(lettre);
 	}
+
+	private Carreau retrouverCarreau(char lettre, ArrayList<Carreau> listeCarreauJouable) {
+		for (int i = 0; i < listeCarreauJouable.size(); i++)
+			if (listeCarreauJouable.get(i).getLettre() == lettre)
+				return listeCarreauJouable.get(i);
+		return null;
+	}
+
+	private int getScore() {
+		return score.getScore(carreauxRouge, carreauxBleu, paquet, mur);
+	}
+
+	public String commande(Carte c, Scanner sc) throws Exception {
+		String test = sc.next();
+		if (test.equals("next")) {
+			getPaquet().ajouteCarteEcartee();
+			return ("Carte écartée");
+		} else if (test.equals("stop")) {
+			return ("Merci d'avoir joué :) \nVotre score: " + getScore() + " points !");
+		} else {
+			int X = sc.nextInt();
+			int Y = sc.nextInt();
+			Carreau carreau = retrouverCarreau(test.charAt(0), carreauxJouable(c));
+			// ON VERIFIE SI LA COMMANDE EST POSSIBLE
+			try {
+				if (getMur().appartientAuMur(X, Y)) {
+					if (lettreJouable(carreauxJouable(c), test.charAt(0))) {
+						if (getMur().caseVide(X - 1, Y - 1, carreau)) {
+							// ON PLACE LE CARREAU
+
+							if (getMur().carreauAdjacent(X - 1, Y - 1, carreau)) {
+								if (getMur().carreauReposeSurBase(X - 1, Y - 1, carreau)) {
+									if (getMur().carreauClone(X - 1, Y - 1, carreau)) {
+										placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
+										// ON RETIRE LE CARREAU JOUER DE LA LISTE
+										retirerCarreaux(test.charAt(0));
+										return ("Carreaux placée");
+									} else {
+										throw new Exception(" Le carreau ne doit pas cloner un autre carreau");
+									}
+								} else {
+									throw new Exception(
+											"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
+								}
+							} else {
+								throw new Exception("Pas de carreau adajcent !");
+							}
+
+						} else {
+							throw new Exception("La case n'est pas vide !");
+							// return ("La case n'est pas vide !");
+						}
+					} else {
+						// return ("Lettre pas dans la liste !");
+						throw new Exception("Lettre pas dans la liste !");
+					}
+				} else {
+					throw new Exception("La position n'appartient pas au mur !");
+					// return ("La position n'appartient pas au mur !");
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				// return ("Impossible vous sortez du tableau !");
+				throw new Exception("Impossible vous sortez du tableau !");
+			}
+		}
+	}
+
 }

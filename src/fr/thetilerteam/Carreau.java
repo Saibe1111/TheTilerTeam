@@ -50,12 +50,6 @@ public class Carreau {
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 
-	// TEMPORAIRE POUR TEST
-
-	public String afficherCarreau() {
-		return this.getLargeur() + " " + this.getHauteur() + " " + this.getLettre();
-	}
-
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
 
 	public void mettreLettreEnMaj() {
@@ -89,9 +83,9 @@ public class Carreau {
 				return true;
 			else
 				return false;
-
+		default:
+			return false;
 		}
-		return false;
 
 	}
 }

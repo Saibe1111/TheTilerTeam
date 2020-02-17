@@ -5,9 +5,12 @@ import java.util.Collections;
 
 public class Paquet {
 	// static car on aura un seul paquet de carte
-	private static ArrayList<Carte> paquet;
+	private ArrayList<Carte> paquet;
+	private int cartesEcartees;
 
 	public Paquet() {
+		cartesEcartees = 0;
+		
 		// ICI ON SPECIFIE LE NOMBRE DE CARTE, LEUR APPELATION ET LEUR DENOMINATION POUR
 		// LE PROGRAMME
 		// ON PEUT EN AJOUTER, EN SUPPRIMER, CHANGER LES APPELATION
@@ -22,7 +25,7 @@ public class Paquet {
 		for (String[] taille : tailles)
 			for (int i = 0; i < Integer.parseInt(taille[0]); ++i)
 				// paquet.add(new Carte(taille[1], taille[2].charAt(0)));
-				Paquet.paquet.add(new Carte(taille[1], taille[2].charAt(0)));
+				this.paquet.add(new Carte(taille[1], taille[2].charAt(0)));
 
 		// ON MELANGE LES CARTES
 		melanger();
@@ -31,15 +34,23 @@ public class Paquet {
 
 	// POUR MELANGER L'ARRAYLIST
 
-	public static void melanger() {
-		Collections.shuffle(Paquet.paquet);
+	public void melanger() {
+		Collections.shuffle(this.paquet);
 	}
 
 	// PIOCHE
-	public static Carte piocher() {
-		Carte c = Paquet.paquet.get(0);
-		Paquet.paquet.remove(0);
+	public Carte piocher() {
+		Carte c = this.paquet.get(0);
+		this.paquet.remove(0);
 		return c;
+	}
+
+	public int getCartesEcartees() {
+		return cartesEcartees;
+	}
+
+	public void ajouteCarteEcartee() {
+		++this.cartesEcartees;
 	}
 
 }
