@@ -33,7 +33,7 @@ public class Appli {
 					if (text.contains("Merci"))
 						FinJeux = false;
 				} catch (Exception e) {
-					e.printStackTrace();
+					// e.printStackTrace();
 					System.err.println(e.getMessage());
 					CommandeNonValide = true;
 
