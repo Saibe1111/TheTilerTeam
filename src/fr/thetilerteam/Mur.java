@@ -127,12 +127,13 @@ public class Mur {
 		}
 		// ON VERIFIE PAS LA DROITE DU TABLEAU SINON ON EN SORTIRAI
 		if (x + c.getLargeur() != this.tailleXTableau()) {
+			System.out.println("entree");
 			if (y + c.getHauteur() < this.tailleYTableau()) {
 				for (int j = y; j < y + c.getHauteur(); ++j)
 					if (this.getMur(x + c.getLargeur(), j) != 0)
 						return true;
 			} else {
-				for (int j = y; j < this.tailleXTableau(); ++j)
+				for (int j = y; j < this.tailleYTableau(); ++j)
 					if (this.getMur(x + c.getLargeur(), j) != 0)
 						return true;
 
@@ -160,6 +161,59 @@ public class Mur {
 		}
 		return true;
 
+	}
+
+	public boolean carreauClone(int x, int y, Carreau c) {
+		boolean test = true;
+		int h1 = 0;
+		int h2 = 0;
+		int l = 0;
+		// ON VERIFIE PAS LA GAUCHE DU TABLEAU SINON ON EN SORTIRAI
+
+		if (x != 0) {
+			// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
+			if (y + c.getHauteur() < this.tailleYTableau()) {
+				for (int j = y; j < y + c.getHauteur(); ++j)
+					if (this.getMur(x - 1, j) != this.getMur(x - 1, y))
+						h1++;
+			} else {
+				for (int j = y; j < this.tailleYTableau(); ++j)
+					if (this.getMur(x - 1, j) != this.getMur(x - 1, y))
+						h1++;
+
+			}
+		}
+		// ON VERIFIE PAS LA DROITE DU TABLEAU SINON ON EN SORTIRAI
+		if (x + c.getLargeur() != this.tailleYTableau()) {
+			if (y + c.getHauteur() < this.tailleYTableau()) {
+				for (int j = y; j < y + c.getHauteur(); ++j)
+					if (this.getMur(x + c.getLargeur() - 1, j) != this.getMur(x + c.getLargeur() - 1, y))
+						h2++;
+			} else {
+				for (int j = y; j < this.tailleYTableau(); ++j)
+					if (this.getMur(x + c.getLargeur() - 1, j) != this.getMur(x + c.getLargeur() - 1, y))
+						h2++;
+
+			}
+		}
+		// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
+		if (y != 0) {
+			for (int j = x; j < x + c.getLargeur(); ++j)
+				if (this.getMur(j, y - 1) != this.getMur(x, y - 1))
+					l++;
+			// ON REGARDE SI ON A UN CARREAU EN DESSOUS
+		}
+		System.out.println();
+		System.out.println(h1);
+		System.out.println(h2);
+		System.out.println(l);
+		System.out.println();
+		System.out.println();
+
+		// this.getMur(x + c.getLargeur() - 1, y);
+		// this.getMur(x - 1, y);
+		// IMPOSSIBLE D'AVOIR UN CARREAU AU DESSOUS SINON PROBLEME REGLE Figure 8
+		return test;
 	}
 
 }

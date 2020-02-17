@@ -167,10 +167,15 @@ public class Jeux {
 								if (getMur().carreauAdjacent(X - 1, Y - 1,
 									carreau)) {
 								if (getMur().carreauReposeSurBase(X - 1, Y - 1, carreau)) {
-										placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
-										// ON RETIRE LE CARREAU JOUER DE LA LISTE
-										retirerCarreaux(test.charAt(0));
-										return ("Carreaux placée");
+								if (getMur().carreauClone(X - 1, Y - 1, carreau)) {
+									placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
+									// ON RETIRE LE CARREAU JOUER DE LA LISTE
+									retirerCarreaux(test.charAt(0));
+									return ("Carreaux placée");
+								} else {
+									throw new Exception(
+											" Le carreau ne doit pas cloner un autre carreau");
+								}
 									} else {
 								throw new Exception(
 										"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
