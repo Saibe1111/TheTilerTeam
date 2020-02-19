@@ -73,6 +73,9 @@ public class Mur {
 		return sb.toString();
 	}
 
+	// PERMET DE CALCULER LE NOMBRE DE NIVEAU CALCULER POUR POUVOIR EN DEDUIR LE
+	// SCORE POUR L'AFFICHAGE FINAL
+
 	public int nombreNiveauComplet() {
 		int nbNiveauComplet = 0;
 		for (int y = 0; y < this.tailleYTableau(); ++y) {
@@ -86,6 +89,9 @@ public class Mur {
 		}
 		return nbNiveauComplet;
 	}
+
+	// PERMET DE SAVOIR SI UNE CASE EST DEJA OCCUPEE PAR UN CARREAU
+	// UTILE LORSQUE LE JOUEUR POSE UN CARREAU
 
 	public boolean caseVide(int x, int y, Carreau c) {
 		if (y < this.tailleYTableau()) {
@@ -167,19 +173,15 @@ public class Mur {
 		int h1 = 0;
 		int h2 = 0;
 		int l = 0;
-		// ON VERIFIE PAS LA GAUCHE DU TABLEAU SINON ON EN SORTIRAI
 		if (y == 0) {
 			if (x != 0) {
-				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
 				if (y + c.getHauteur() < this.tailleYTableau() + 1) {
 
 					for (int j = y; j < y + c.getHauteur(); ++j)
 						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
 							h1++;
 					if (h1 == c.getHauteur()) {
-						// System.out.println("ok");
 						if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)) {
-							// System.out.println("ok");
 							return false;
 						}
 					}
@@ -187,17 +189,13 @@ public class Mur {
 			}
 		} else {
 			if (x != 0) {
-				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
 				if (y + c.getHauteur() < this.tailleYTableau()) {
-					// System.out.println("ici");
 					for (int j = y; j < y + c.getHauteur(); ++j)
 						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
 							h1++;
 					if (h1 == c.getHauteur()) {
-						// System.out.println("ok");
 						if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)
 								&& this.getMur(x - 1, y - 1) != this.getMur(x - 1, y)) {
-							System.out.println("ok");
 							return false;
 						}
 					}
@@ -205,11 +203,8 @@ public class Mur {
 			}
 		}
 
-		// ON VERIFIE PAS LA DROITE DU TABLEAU SINON ON EN SORTIRAI
-
 		if (y == 0) {
 			if (x + c.getLargeur() != this.tailleXTableau()) {
-				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
 				if (y + c.getHauteur() < this.tailleYTableau()) {
 					for (int j = y; j < y + c.getHauteur(); ++j) {
 						if (this.getMur(x + c.getLargeur(), j) == this.getMur(x + c.getLargeur(), y))
@@ -217,17 +212,13 @@ public class Mur {
 					}
 					if (h2 == c.getHauteur()) {
 						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)) {
-							System.out.println("ok2");
 							return false;
 						}
 					}
 				}
 			}
 		} else {
-			// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
-			//
 			if (x + c.getLargeur() != this.tailleXTableau()) {
-				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
 				if (y + c.getHauteur() < this.tailleYTableau()) {
 					for (int j = y; j < y + c.getHauteur(); ++j) {
 						if (this.getMur(x + c.getLargeur(), j) == this.getMur(x + c.getLargeur(), y))
@@ -236,9 +227,7 @@ public class Mur {
 					if (h2 == c.getHauteur()) {
 						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)
 								&& this.getMur(x + c.getLargeur(), y - 1) != this.getMur(x + c.getLargeur(), y)) {
-							System.out.println("ok3");
 							return false;
-
 						}
 					}
 				}
@@ -246,46 +235,37 @@ public class Mur {
 		}
 
 		if (x == 0) {
-			// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
 			if (y != 0) {
 				for (int j = x; j < x + c.getLargeur(); ++j)
 					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
 						l++;
 				if (l == c.getLargeur()) {
 					if (this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1)) {
-						System.out.println("ok4");
 						return false;
 					}
 				}
-				// ON REGARDE SI ON A UN CARREAU EN DESSOUS
 			}
 		} else if (x + c.getLargeur() == tailleXTableau()) {
-			// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
 			if (y != 0) {
 				for (int j = x; j < x + c.getLargeur(); ++j)
 					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
 						l++;
 				if (l == c.getLargeur()) {
 					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)) {
-						System.out.println("ok5");
 						return false;
 					}
 				}
-				// ON REGARDE SI ON A UN CARREAU EN DESSOUS
 			}
 		} else {
-			// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
 			if (y != 0) {
 				for (int j = x; j < x + c.getLargeur(); ++j)
 					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
 						l++;
-				if (l == c.getLargeur()) {
+				if (l == c.getLargeur())
 					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)
 							&& this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1)) {
 						return false;
 					}
-				}
-				// ON REGARDE SI ON A UN CARREAU EN DESSOUS
 			}
 		}
 
