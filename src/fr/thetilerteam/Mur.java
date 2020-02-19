@@ -171,7 +171,8 @@ public class Mur {
 		if (y == 0) {
 			if (x != 0) {
 				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
-				if (y + c.getHauteur() < this.tailleYTableau()) {
+				if (y + c.getHauteur() < this.tailleYTableau() + 1) {
+
 					for (int j = y; j < y + c.getHauteur(); ++j)
 						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
 							h1++;
@@ -188,6 +189,7 @@ public class Mur {
 			if (x != 0) {
 				// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
 				if (y + c.getHauteur() < this.tailleYTableau()) {
+					// System.out.println("ici");
 					for (int j = y; j < y + c.getHauteur(); ++j)
 						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
 							h1++;
@@ -195,7 +197,7 @@ public class Mur {
 						// System.out.println("ok");
 						if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)
 								&& this.getMur(x - 1, y - 1) != this.getMur(x - 1, y)) {
-							// System.out.println("ok");
+							System.out.println("ok");
 							return false;
 						}
 					}
@@ -215,6 +217,7 @@ public class Mur {
 					}
 					if (h2 == c.getHauteur()) {
 						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)) {
+							System.out.println("ok2");
 							return false;
 						}
 					}
@@ -232,8 +235,10 @@ public class Mur {
 					}
 					if (h2 == c.getHauteur()) {
 						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)
-								&& this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y)) {
+								&& this.getMur(x + c.getLargeur(), y - 1) != this.getMur(x + c.getLargeur(), y)) {
+							System.out.println("ok3");
 							return false;
+
 						}
 					}
 				}
@@ -248,6 +253,7 @@ public class Mur {
 						l++;
 				if (l == c.getLargeur()) {
 					if (this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1)) {
+						System.out.println("ok4");
 						return false;
 					}
 				}
@@ -261,6 +267,7 @@ public class Mur {
 						l++;
 				if (l == c.getLargeur()) {
 					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)) {
+						System.out.println("ok5");
 						return false;
 					}
 				}
