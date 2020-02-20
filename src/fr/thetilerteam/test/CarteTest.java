@@ -1,4 +1,4 @@
-package fr.thetilerteamTest;
+package fr.thetilerteam.test;
 
 import org.junit.jupiter.api.Test;
 

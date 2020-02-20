@@ -1,3 +1,11 @@
+/**
+  * @file Carreau.java
+  * @author Iris CHAIX
+  * @author Sébastien CUVELLIER
+  * @version version 1 - 20/02/2020
+  * @brief 	Classe Carreau
+ */
+
 package fr.thetilerteam;
 
 public class Carreau {
@@ -6,8 +14,7 @@ public class Carreau {
 	private int largeur;
 	private char lettre;
 
-	// DEFAULT
-
+	// CONSTRUCTEUR
 	public Carreau(int largeur, int hauteur, char lettre) {
 		this.setLargeur(largeur);
 		this.setHauteur(hauteur);

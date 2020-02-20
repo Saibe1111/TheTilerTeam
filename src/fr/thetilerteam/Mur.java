@@ -1,3 +1,11 @@
+/**
+  * @file Mur.java
+  * @author Iris CHAIX
+  * @author Sébastien CUVELLIER
+  * @version version 1 - 20/02/2020
+  * @brief 	Classe Mur
+ */
+
 package fr.thetilerteam;
 
 import java.util.ArrayList;

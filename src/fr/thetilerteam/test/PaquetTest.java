@@ -1,10 +1,10 @@
-package fr.thetilerteamTest;
+package fr.thetilerteam.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ListeCarreauxTest {
+class PaquetTest {
 
 	@Test
 	void test() {

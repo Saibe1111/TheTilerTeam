@@ -1,14 +1,14 @@
-package fr.thetilerteamTest;
+package fr.thetilerteam.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class PaquetTest {
+class ScoreTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

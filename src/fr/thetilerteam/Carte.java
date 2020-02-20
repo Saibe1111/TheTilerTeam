@@ -1,3 +1,11 @@
+/**
+  * @file Carte.java
+  * @author Iris CHAIX
+  * @author Sébastien CUVELLIER
+  * @version version 1 - 20/02/2020
+  * @brief 	Classe Carte
+ */
+
 package fr.thetilerteam;
 
 public class Carte {

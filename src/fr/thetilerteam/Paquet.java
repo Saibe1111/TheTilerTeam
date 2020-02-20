@@ -1,3 +1,11 @@
+/**
+  * @file Carreau.java
+  * @author Iris CHAIX
+  * @author Sébastien CUVELLIER
+  * @version version 1 - 20/02/2020
+  * @brief 	Classe Paquet 
+ */
+
 package fr.thetilerteam;
 
 import java.util.ArrayList;
@@ -10,7 +18,7 @@ public class Paquet {
 
 	public Paquet() {
 		cartesEcartees = 0;
-		
+
 		// ICI ON SPECIFIE LE NOMBRE DE CARTE, LEUR APPELATION ET LEUR DENOMINATION POUR
 		// LE PROGRAMME
 		// ON PEUT EN AJOUTER, EN SUPPRIMER, CHANGER LES APPELATION
