@@ -14,17 +14,17 @@ public class Carte {
 
 	// DEFAULT
 
+	public Carte(String nom, char type) {
+		this.nomCarte = nom;
+		this.TypeCarte = type;
+	}
+
 	public String getNomCarte() {
 		return nomCarte;
 	}
 
 	public char getTypeCarte() {
 		return TypeCarte;
-	}
-
-	public Carte(String nom, char type) {
-		this.nomCarte = nom;
-		this.TypeCarte = type;
 	}
 
 }

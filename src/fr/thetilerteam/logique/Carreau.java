@@ -28,6 +28,7 @@ public class Carreau {
 	}
 
 	private void setHauteur(int hauteur) {
+		assert hauteur > 0 : "Impossible que la hauteur soit null ou négatif";
 		this.hauteur = hauteur;
 	}
 
@@ -38,6 +39,7 @@ public class Carreau {
 	}
 
 	private void setLargeur(int largeur) {
+		assert largeur > 0 : "Impossible que la largeur soit null ou négatif";
 		this.largeur = largeur;
 	}
 
@@ -54,6 +56,7 @@ public class Carreau {
 	// CARREAU DE TAILLE N
 
 	public boolean carreauTailleN(int n) {
+		assert n >= 0 : "Impossible que n soit null ou négatif";
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 
@@ -63,7 +66,7 @@ public class Carreau {
 		this.lettre = Character.toUpperCase(this.lettre);
 	}
 
-	public boolean testCareau(char c) {
+	public boolean carteTestCarreau(char c) {
 		switch (c) {
 		case 'B':
 			if (Character.isUpperCase(this.lettre))
