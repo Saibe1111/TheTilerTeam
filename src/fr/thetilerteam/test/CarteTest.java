@@ -8,17 +8,16 @@
 
 package fr.thetilerteam.test;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import fr.thetilerteam.logique.Carte;
 
+import static org.junit.Assert.*;
+
 class CarteTest {
 
 	private static Carte c;
-
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		c = new Carte("test", 't');
@@ -26,12 +25,12 @@ class CarteTest {
 
 	@Test
 	void testGetNomCarte() {
-		assertTrue("Problème getNomCarte", c.getNomCarte() == "test");
+		assertSame("Problème getNomCarte", "test", c.getNomCarte());
 	}
 
 	@Test
 	void testGetTypeCarte() {
-		assertTrue("Problème getTypeCarte", c.getTypeCarte() == 't');
+		assertEquals("Problème getTypeCarte", 't', c.getTypeCarte());
 	}
 
 }

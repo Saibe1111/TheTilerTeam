@@ -56,7 +56,7 @@ public class Carreau {
 	// CARREAU DE TAILLE N
 
 	public boolean carreauTailleN(int n) {
-		assert n >= 0 : "Impossible que n soit null ou négatif";
+		assert n > 0 : "Impossible que n soit null ou négatif";
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 
@@ -69,30 +69,15 @@ public class Carreau {
 	public boolean carteTestCarreau(char c) {
 		switch (c) {
 		case 'B':
-			if (Character.isUpperCase(this.lettre))
-				return false;
-			else
-				return true;
+			return !Character.isUpperCase(this.lettre);
 		case 'R':
-			if (Character.isUpperCase(this.lettre))
-				return true;
-			else
-				return false;
+			return Character.isUpperCase(this.lettre);
 		case '1':
-			if (this.carreauTailleN(1))
-				return true;
-			else
-				return false;
+			return this.carreauTailleN(1);
 		case '2':
-			if (this.carreauTailleN(2))
-				return true;
-			else
-				return false;
+			return this.carreauTailleN(2);
 		case '3':
-			if (this.carreauTailleN(3))
-				return true;
-			else
-				return false;
+			return this.carreauTailleN(3);
 		default:
 			return false;
 		}
