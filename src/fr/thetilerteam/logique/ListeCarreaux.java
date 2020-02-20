@@ -5,7 +5,7 @@
   * @version version 1 - 20/02/2020
   * @brief 	Classe Liste des Carreau
  */
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 import java.util.ArrayList;
 

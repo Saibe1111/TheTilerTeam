@@ -6,7 +6,7 @@
   * @brief 	Classe Jeux
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -152,6 +152,7 @@ public class Jeux {
 	}
 
 	public String commande(Carte c, Scanner sc) throws Exception {
+		// VIRER LE SCANNER - STINGBUFFER
 		String test = sc.next();
 		if (test.equals("next")) {
 			getPaquet().ajouteCarteEcartee();
@@ -164,43 +165,24 @@ public class Jeux {
 			Carreau carreau = retrouverCarreau(test.charAt(0), carreauxJouable(c));
 			// ON VERIFIE SI LA COMMANDE EST POSSIBLE
 			try {
-				if (getMur().appartientAuMur(X, Y)) {
-					if (lettreJouable(carreauxJouable(c), test.charAt(0))) {
-						if (getMur().caseVide(X - 1, Y - 1, carreau)) {
-							// ON PLACE LE CARREAU
-
-							if (getMur().carreauAdjacent(X - 1, Y - 1, carreau)) {
-								if (getMur().carreauReposeSurBase(X - 1, Y - 1, carreau)) {
-									if (getMur().carreauClone(X - 1, Y - 1, carreau)) {
-										placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
-										// ON RETIRE LE CARREAU JOUER DE LA LISTE
-										retirerCarreaux(test.charAt(0));
-										return ("Carreaux placée");
-									} else {
-										throw new Exception(" Le carreau ne doit pas cloner un autre carreau");
-									}
-								} else {
-									throw new Exception(
-											"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
-								}
-							} else {
-								throw new Exception("Pas de carreau adajcent !");
-							}
-
-						} else {
-							throw new Exception("La case n'est pas vide !");
-							// return ("La case n'est pas vide !");
-						}
-					} else {
-						// return ("Lettre pas dans la liste !");
-						throw new Exception("Lettre pas dans la liste !");
-					}
-				} else {
+				if (!getMur().appartientAuMur(X, Y))
 					throw new Exception("La position n'appartient pas au mur !");
-					// return ("La position n'appartient pas au mur !");
-				}
+				if (!lettreJouable(carreauxJouable(c), test.charAt(0)))
+					throw new Exception("Lettre pas dans la liste !");
+				if (!getMur().caseVide(X - 1, Y - 1, carreau))
+					throw new Exception("La case n'est pas vide !");
+				if (!getMur().carreauAdjacent(X - 1, Y - 1, carreau))
+					throw new Exception("Pas de carreau adajcent !");
+				if (!getMur().carreauReposeSurBase(X - 1, Y - 1, carreau))
+					throw new Exception(
+							"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
+				if (!getMur().carreauClone(X - 1, Y - 1, carreau))
+					throw new Exception("Le carreau ne doit pas cloner un autre carreau");
+				placerCarreau(test.charAt(0), X - 1, Y - 1, carreauxJouable(c));
+				// ON RETIRE LE CARREAU JOUER DE LA LISTE
+				retirerCarreaux(test.charAt(0));
+				return ("Carreaux placée");
 			} catch (ArrayIndexOutOfBoundsException e) {
-				// return ("Impossible vous sortez du tableau !");
 				throw new Exception("Impossible vous sortez du tableau !");
 			}
 		}

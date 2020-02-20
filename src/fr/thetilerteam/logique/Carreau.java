@@ -6,7 +6,7 @@
   * @brief 	Classe Carreau
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 public class Carreau {
 

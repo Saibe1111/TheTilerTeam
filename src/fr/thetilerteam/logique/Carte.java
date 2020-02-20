@@ -6,7 +6,7 @@
   * @brief 	Classe Carte
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 public class Carte {
 	private String nomCarte;

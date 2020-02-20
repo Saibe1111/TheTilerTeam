@@ -6,7 +6,7 @@
   * @brief 	Classe Mur
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 import java.util.ArrayList;
 

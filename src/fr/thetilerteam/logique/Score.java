@@ -6,7 +6,7 @@
   * @brief 	Classe Score
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 public class Score {
 	private int scores;

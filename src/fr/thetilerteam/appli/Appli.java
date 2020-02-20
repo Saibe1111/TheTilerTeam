@@ -10,8 +10,8 @@ package fr.thetilerteam.appli;
 
 import java.util.Scanner;
 
-import fr.thetilerteam.Carte;
-import fr.thetilerteam.Jeux;
+import fr.thetilerteam.logique.Carte;
+import fr.thetilerteam.logique.Jeux;
 
 public class Appli {
 

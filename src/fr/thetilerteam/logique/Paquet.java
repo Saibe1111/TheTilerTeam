@@ -6,7 +6,7 @@
   * @brief 	Classe Paquet 
  */
 
-package fr.thetilerteam;
+package fr.thetilerteam.logique;
 
 import java.util.ArrayList;
 import java.util.Collections;
