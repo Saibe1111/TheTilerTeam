@@ -3,7 +3,7 @@
   * @author Iris CHAIX
   * @author Sébastien CUVELLIER
   * @version version 1 - 20/02/2020
-  * @brief 	Appli Mur
+  * @brief 	Main avec classe Appli
  */
 
 package fr.thetilerteam.appli;

@@ -1,5 +1,5 @@
 /**
-  * @file Carreau.java
+  * @file Paquet.java
   * @author Iris CHAIX
   * @author Sébastien CUVELLIER
   * @version version 1 - 20/02/2020

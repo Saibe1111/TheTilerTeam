@@ -1,22 +1,19 @@
+/**
+  * @file MurTest.java
+  * @author Iris CHAIX
+  * @author Sébastien CUVELLIER
+  * @version version 1 - 20/02/2020
+  * @brief 	Test de la classe Mur 
+ */
+
 package fr.thetilerteam.test;
 
 import org.junit.jupiter.api.Test;
-
-import fr.thetilerteam.Mur;
 
 class MurTest {
 
 	@Test
 	void test() {
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		// FonctionMur.afficherMur(mur);
-		Mur mur = new Mur();
-		mur.setMur(4, 1, 'a');
-		System.out.println(mur.toStringMur());
 
 	}
 
