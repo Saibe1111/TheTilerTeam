@@ -44,24 +44,20 @@ public class Carreau {
 	}
 
 	// LETTRE
-
 	public char getLettre() {
 		return this.lettre;
 	}
-
 	private void setLettre(char lettre) {
 		this.lettre = lettre;
 	}
 
 	// CARREAU DE TAILLE N
-
 	public boolean carreauTailleN(int n) {
 		assert n > 0 : "Impossible que n soit null ou négatif";
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
-
 	public void mettreLettreEnMaj() {
 		this.lettre = Character.toUpperCase(this.lettre);
 	}

@@ -24,10 +24,6 @@ public class Score {
 		return scores;
 	}
 
-	public void setScore(int scores) {
-		this.scores = scores;
-	}
-
 	private void calculerPointNiveauComplet(Mur m) {
 		this.scores += 5 * m.nombreNiveauComplet();
 	}

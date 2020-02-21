@@ -8,7 +8,7 @@
 
 package fr.thetilerteam.test;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fr.thetilerteam.logique.Carte;
@@ -18,8 +18,9 @@ import static org.junit.Assert.*;
 class CarteTest {
 
 	private static Carte c;
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+
+	@BeforeEach
+	void setUp() {
 		c = new Carte("test", 't');
 	}
 

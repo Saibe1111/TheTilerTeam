@@ -1,8 +1,7 @@
 package fr.thetilerteam.test;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fr.thetilerteam.logique.Carreau;
@@ -13,32 +12,27 @@ class CarreauTest {
 
 	private static Carreau c;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() {
 		c = new Carreau(1, 1, 't');
 	}
-
 
 	@Test
 	void testNegatif() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(1, -1, 't');
-		}, "Problème de gestion du négatif dans la déclaration carreaux");
+			c = new Carreau(1, -1, 't'); }, "Problème de gestion du négatif dans la déclaration carreaux");
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(-1, 1, 't');
-		}, "Problème de gestion du négatif dans la déclaration carreaux");
+			c = new Carreau(-1, 1, 't'); }, "Problème de gestion du négatif dans la déclaration carreaux");
 	}
 
 	@Test
 	void testNull() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(1, 0, 't');
-		}, "Problème de gestion du null dans la déclaration carreaux");
+			c = new Carreau(1, 0, 't'); }, "Problème de gestion du null dans la déclaration carreaux");
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(0, 1, 't');
-		}, "Problème de gestion du null dans la déclaration carreaux");
+			c = new Carreau(0, 1, 't');}, "Problème de gestion du null dans la déclaration carreaux");
 	}
 
 	@Test
@@ -48,13 +42,11 @@ class CarreauTest {
 
 	@Test
 	void testGetLargeur() {
-		c = new Carreau(1, 1, 't');
 		assertTrue("Problème getLargeur" , c.getLargeur() == 1);
 	}
 
 	@Test
 	void testGetLettre() {
-		c = new Carreau(1, 1, 't');
 		assertEquals("Problème getLettre" + c.getLettre(), c.getLettre() , 't');
 	}
 
@@ -63,13 +55,11 @@ class CarreauTest {
 		assertTrue("Problème carreauTailleN", c.carreauTailleN(1));
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c.carreauTailleN(-1);
-		}, "Problème de gestion du négatif dans CarreauTailleN");
+			c.carreauTailleN(-1);}, "Problème de gestion du négatif dans CarreauTailleN");
 
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c.carreauTailleN(0);
-		}, "Problème de gestion du null dans CarreauTailleN");
+			c.carreauTailleN(0);}, "Problème de gestion du null dans CarreauTailleN");
 	}
 
 	@Test
@@ -113,7 +103,6 @@ class CarreauTest {
 
 		c = new Carreau(2, 1, 't');
 		assertFalse("Problème test taille false", c.carteTestCarreau('3'));
-
 
 		//R
 

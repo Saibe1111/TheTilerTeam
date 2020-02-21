@@ -13,7 +13,6 @@ public class Carte {
 	private char TypeCarte;
 
 	// DEFAULT
-
 	public Carte(String nom, char type) {
 		this.nomCarte = nom;
 		this.TypeCarte = type;
