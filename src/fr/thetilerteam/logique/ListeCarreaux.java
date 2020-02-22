@@ -31,7 +31,7 @@ public class ListeCarreaux {
 
 	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE)
 
-	public ArrayList<Carreau> MettreLettreEnMaj() {
+	public ArrayList<Carreau> mettreLettresEnMajuscule() {
 		// ON PARCOUR LA LISTE ET ON MET CHAQUE LETTRE EN MAJUSCULE
 		for (Carreau car : this.listeCarreaux)
 			car.mettreLettreEnMaj();

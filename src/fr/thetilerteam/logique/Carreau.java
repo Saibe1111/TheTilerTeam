@@ -1,5 +1,5 @@
 /**
-  * @file Carreau.java
+ * @file Carreau.java
   * @author Iris CHAIX
   * @author Sébastien CUVELLIER
   * @version version 1 - 20/02/2020
@@ -47,6 +47,7 @@ public class Carreau {
 	public char getLettre() {
 		return this.lettre;
 	}
+
 	private void setLettre(char lettre) {
 		this.lettre = lettre;
 	}

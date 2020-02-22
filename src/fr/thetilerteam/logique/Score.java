@@ -20,7 +20,6 @@ public class Score {
 		this.calculerPointCarreauxPasPoseListe(listeRouge);
 		this.calculerPointCarreauxPasPoseListe(listeBleu);
 		this.calculerPointNiveauComplet(m);
-
 		return scores;
 	}
 

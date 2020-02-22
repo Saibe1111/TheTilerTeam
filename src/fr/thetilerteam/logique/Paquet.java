@@ -42,7 +42,7 @@ public class Paquet {
 
 	// POUR MELANGER L'ARRAYLIST
 
-	public void melanger() {
+	private void melanger() {
 		Collections.shuffle(this.paquet);
 	}
 

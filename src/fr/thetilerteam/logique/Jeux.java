@@ -10,7 +10,6 @@ package fr.thetilerteam.logique;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Jeux {
 	private Paquet paquet;
@@ -26,7 +25,7 @@ public class Jeux {
 		score = new Score();
 		paquet = new Paquet();
 		carreauxRouge = new ListeCarreaux();
-		carreauxRouge.MettreLettreEnMaj();
+		carreauxRouge.mettreLettresEnMajuscule();
 		carreauxBleu = new ListeCarreaux();
 		mur = new Mur();
 		// ON GENERE UN NOMBRE ALEATOIRE
@@ -58,6 +57,7 @@ public class Jeux {
 	public Mur getMur() {
 		return mur;
 	}
+
 	// PERMET DE RECUPERER LE MUR
 	public Paquet getPaquet() {
 		return paquet;
@@ -139,17 +139,22 @@ public class Jeux {
 		return score.getScore(carreauxRouge, carreauxBleu, paquet, mur);
 	}
 
-	public String commande(Carte c, Scanner sc) throws Exception {
+	public String commande(Carte c, String chaine) throws Exception {
+		String chaineArr[] = chaine.split("\\s", 3);
+
 		// VIRER LE SCANNER - STINGBUFFER
-		String test = sc.next();
+		String test = chaineArr[0];
+
 		if (test.equals("next")) {
 			getPaquet().ajouteCarteEcartee();
 			return ("Carte écartée");
 		} else if (test.equals("stop")) {
 			return ("Merci d'avoir joué :) \nVotre score: " + getScore() + " points !");
 		} else {
-			int X = sc.nextInt();
-			int Y = sc.nextInt();
+
+			int X = Integer.parseInt(chaineArr[1]);
+			int Y = Integer.parseInt(chaineArr[2]);
+
 			Carreau carreau = retrouverCarreau(test.charAt(0), carreauxJouable(c));
 			// ON VERIFIE SI LA COMMANDE EST POSSIBLE
 			try {
