@@ -10,12 +10,12 @@ package fr.thetilerteam.logique;
 
 public class Carte {
 	private String nomCarte;
-	private char TypeCarte;
+	private char typeCarte;
 
 	// DEFAULT
 	public Carte(String nom, char type) {
 		this.nomCarte = nom;
-		this.TypeCarte = type;
+		this.typeCarte = type;
 	}
 
 	public String getNomCarte() {
@@ -23,7 +23,7 @@ public class Carte {
 	}
 
 	public char getTypeCarte() {
-		return TypeCarte;
+		return typeCarte;
 	}
 
 }
