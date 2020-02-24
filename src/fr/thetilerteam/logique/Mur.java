@@ -176,6 +176,27 @@ public class Mur {
 
 	}
 
+	private int cloneH1(int y, int x, Carreau c, int r) {
+		int h1 = 0;
+		if (y + c.getHauteur() < this.tailleYTableau() + r) {
+			for (int j = y; j < y + c.getHauteur(); ++j)
+				if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
+					h1++;
+		}
+		return h1;
+	}
+
+	private int cloneH2(int y, int x, Carreau c) {
+		int h2 = 0;
+		if (x + c.getLargeur() != this.tailleXTableau())
+			if (y + c.getHauteur() < this.tailleYTableau()) {
+				for (int j = y; j < y + c.getHauteur(); ++j)
+					if (this.getMur(x + c.getLargeur(), j) == this.getMur(x + c.getLargeur(), y))
+						h2++;
+			}
+		return h2;
+	}
+
 	public boolean carreauClone(int x, int y, Carreau c) {
 
 		int h1 = 0;
@@ -183,101 +204,65 @@ public class Mur {
 		int l = 0;
 		if (y == 0) {
 			if (x != 0) {
-				if (y + c.getHauteur() < this.tailleYTableau() + 1) {
-
-					for (int j = y; j < y + c.getHauteur(); ++j)
-						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
-							h1++;
-					if (h1 == c.getHauteur()) {
-						if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)) {
-							return false;
-						}
-					}
-				}
-			}
-		} else {
-			if (x != 0) {
-				if (y + c.getHauteur() < this.tailleYTableau()) {
-					for (int j = y; j < y + c.getHauteur(); ++j)
-						if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
-							h1++;
-					if (h1 == c.getHauteur()) {
-						if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)
-								&& this.getMur(x - 1, y - 1) != this.getMur(x - 1, y)) {
-							return false;
-						}
-					}
-				}
-			}
-		}
-
-		if (y == 0) {
-			if (x + c.getLargeur() != this.tailleXTableau()) {
-				if (y + c.getHauteur() < this.tailleYTableau()) {
-					for (int j = y; j < y + c.getHauteur(); ++j) {
-						if (this.getMur(x + c.getLargeur(), j) == this.getMur(x + c.getLargeur(), y))
-							h2++;
-					}
-					if (h2 == c.getHauteur()) {
-						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)) {
-							return false;
-						}
-					}
-				}
-			}
-		} else {
-			if (x + c.getLargeur() != this.tailleXTableau()) {
-				if (y + c.getHauteur() < this.tailleYTableau()) {
-					for (int j = y; j < y + c.getHauteur(); ++j) {
-						if (this.getMur(x + c.getLargeur(), j) == this.getMur(x + c.getLargeur(), y))
-							h2++;
-					}
-					if (h2 == c.getHauteur()) {
-						if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)
-								&& this.getMur(x + c.getLargeur(), y - 1) != this.getMur(x + c.getLargeur(), y)) {
-							return false;
-						}
-					}
-				}
-			}
-		}
-
-		if (x == 0) {
-			if (y != 0) {
-				for (int j = x; j < x + c.getLargeur(); ++j)
-					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
-						l++;
-				if (l == c.getLargeur()) {
-					if (this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1)) {
+				h1 = this.cloneH1(y, x, c, 1);
+				if (h1 == c.getHauteur())
+					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y))
 						return false;
-					}
-				}
 			}
-		} else if (x + c.getLargeur() == tailleXTableau()) {
-			if (y != 0) {
-				for (int j = x; j < x + c.getLargeur(); ++j)
-					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
-						l++;
-				if (l == c.getLargeur()) {
-					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)) {
+			if (x + c.getLargeur() != this.tailleXTableau()) {
+				h2 = this.cloneH2(y, x, c);
+
+				if (h2 == c.getHauteur())
+					if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y))
 						return false;
-					}
-				}
 			}
-		} else {
-			if (y != 0) {
-				for (int j = x; j < x + c.getLargeur(); ++j)
-					if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
-						l++;
+
+		} else if (y != 0) {
+			if (x == 0) {
+				l = this.coloneL(y, x, c);
+				if (l == c.getLargeur())
+					if (this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1))
+						return false;
+			} else if (x + c.getLargeur() == tailleXTableau()) {
+				l = this.coloneL(y, x, c);
+				if (l == c.getLargeur())
+					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1))
+						return false;
+			} else {
+				l = this.coloneL(y, x, c);
 				if (l == c.getLargeur())
 					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)
-							&& this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1)) {
+							&& this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1))
 						return false;
-					}
 			}
 		}
 
+		else {
+			if (x != 0) {
+				h1 = this.cloneH1(y, x, c, 0);
+				if (h1 == c.getHauteur())
+					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)
+							&& this.getMur(x - 1, y - 1) != this.getMur(x - 1, y))
+						return false;
+			}
+			if (x + c.getLargeur() != this.tailleXTableau()) {
+				h2 = this.cloneH2(y, x, c);
+
+				if (h2 == c.getHauteur())
+					if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)
+							&& this.getMur(x + c.getLargeur(), y - 1) != this.getMur(x + c.getLargeur(), y))
+						return false;
+			}
+		}
 		return true;
+	}
+
+	private int coloneL(int y, int x, Carreau c) {
+		int l = 0;
+		for (int j = x; j < x + c.getLargeur(); ++j)
+			if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
+				l++;
+		return l;
 	}
 
 }
