@@ -1,6 +1,7 @@
 package fr.thetilerteam.test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,10 +19,24 @@ class PaquetTest {
 	}
 
 	@Test
-	void testPiocherTestPaquet() {
+	void testPiocherTestPaquet() throws Exception {
 		Carte c = p.piocher();
 		assertTrue("Problème de carte / de pioche", c.getTypeCarte() == 'B' || c.getTypeCarte() == 'R'
 				|| c.getTypeCarte() == '1' || c.getTypeCarte() == '2' || c.getTypeCarte() == '3');
+	}
+
+	@Test
+	void testPaquetVide() throws Exception {
+		Carte c;
+		for (int i = 0; i < 33; ++i)
+			c = p.piocher();
+		try {
+			c = p.piocher();
+			fail("Paquet vide sans déclancher l'exeption");
+		} catch (Exception e) {
+
+		}
+
 	}
 
 	@Test

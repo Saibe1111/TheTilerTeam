@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Paquet {
-	// static car on aura un seul paquet de carte
 	private ArrayList<Carte> paquet;
 	private int cartesEcartees;
 
@@ -47,7 +46,9 @@ public class Paquet {
 	}
 
 	// PIOCHE
-	public Carte piocher() {
+	public Carte piocher() throws Exception {
+		if (paquet.size() == 0)
+			throw new Exception("Plus de carte dans le paquet fin de la partie");
 		Carte c = this.paquet.get(0);
 		this.paquet.remove(0);
 		return c;

@@ -27,16 +27,27 @@ public class Appli {
 		// s.append(FinJeux);
 		// TANT QUE LE JEUX N'EST PAS FINI ON BOUCLE
 		while (FinJeux) {
-
+			boolean CommandeValide = false;
 			// ON AFFICHE LE MUR (ZONE A CARRELER)
 			System.out.println(j.getMur().toStringMur() + "\n");
-			// ON PIOCHE UNE CARTE
-			Carte c = j.getPaquet().piocher();
+			Carte c = null;
+			try {
+				// ON PIOCHE UNE CARTE
+				c = j.getPaquet().piocher();
+			} catch (Exception e) {
+				FinJeux = false;
+				System.err.println(e.getMessage());
+				System.out.println("Merci d'avoir joué :) \nVotre score: " + j.getScore() + " points !");
+				break;
+			}
+
 			// ON AFFICHE LA CARTE PIOCHEE
 			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
-			System.out.println(j.toStringCarreauJouable(j.carreauxJouable(c)));
-			boolean CommandeValide = false;
+			String string = j.toStringCarreauJouable(j.carreauxJouable(c));
+			if (string.contentEquals("Carte écarté, aucun carreau jouable"))
+				CommandeValide = true;
+			System.out.println(string);
 			// TANT QUE LA COMMANDE N'EST PAS VALIDE
 			while (!CommandeValide) {
 				// ON ESSAYE DE FAIRE LA COMMANDE
@@ -54,7 +65,7 @@ public class Appli {
 					// SI LA COMMANDE PRECEDENTE DE PEUX PAS S'EXECUTER, ON AFFICHE LE MESSAGE
 					// D'ERREUR
 				} catch (Exception e) {
-					e.printStackTrace();
+					// e.printStackTrace();
 					System.err.println(e.getMessage());
 					// ON SET LA COMMANDE DANS LA POSITION OU ELLE EST NON VALIDE
 					CommandeValide = false;

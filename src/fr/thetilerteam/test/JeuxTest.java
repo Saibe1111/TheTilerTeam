@@ -1,68 +1,58 @@
 package fr.thetilerteam.test;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.thetilerteam.logique.Mur;
-
-class MurTest {
-
-	private static Mur m;
+class JeuxTest {
 
 	@BeforeEach
-	void setUp() {
-		m = new Mur();
+	void setUp() throws Exception {
 	}
 
 	@Test
-	void testAjoutLigne() {
-		m.ajoutLigne();
+	void testJeux() {
+		fail("Not yet implemented");
 	}
 
 	@Test
 	void testGetMur() {
-
-	}
-
-	@Test
-	void testSetMur() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testAppartientAuMur() {
+	void testGetPaquet() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testPlacerCarreauSurMur() {
+	void testCarreauxJouable() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testNombreNiveauComplet() {
+	void testToStringCarreauJouable() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testCaseVide() {
+	void testRetirerCarreaux() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testCarreauAdjacent() {
+	void testPlacerCarreau() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testCarreauReposeSurBase() {
+	void testGetScore() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testCarreauClone() {
+	void testCommande() {
 		fail("Not yet implemented");
 	}
 
