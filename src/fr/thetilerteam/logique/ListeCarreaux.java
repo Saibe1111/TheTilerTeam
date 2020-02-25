@@ -20,7 +20,8 @@ public class ListeCarreaux {
 		// CHANGER LES TAILLES (HAUTEUR MAX 3, SINON
 		// PROBLEME AVEC L'AFFICHAGE DES CARREAUX JOUABLE CAR TABLEAU DE CHAR DE
 		// HAUTEUR) --FIXABLE PAR DOUBLE ARRAYLIST, SI ON A LE TEMPS
-		int[][] tailles = { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 2, 2 }, { 1, 3 }, { 3, 1 }, { 2, 3 }, { 3, 2 }, { 3, 3 } };
+		int[][] tailles = { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 2, 2 }, { 1, 3 }, { 3, 1 }, { 2, 3 }, { 3, 2 }, { 3, 3 },
+				{ 4, 4 } };
 		// ON CONSTRUIT LA LISTE DES DES CARREAUX
 		listeCarreaux = new ArrayList<>();
 		for (int[] taille : tailles)

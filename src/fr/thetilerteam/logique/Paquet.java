@@ -33,7 +33,6 @@ public class Paquet {
 			for (int i = 0; i < Integer.parseInt(taille[0]); ++i)
 				// paquet.add(new Carte(taille[1], taille[2].charAt(0)));
 				this.paquet.add(new Carte(taille[1], taille[2].charAt(0)));
-
 		// ON MELANGE LES CARTES
 		melanger();
 

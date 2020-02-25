@@ -88,6 +88,20 @@ public class Jeux {
 		return test;
 	}
 
+	private int plusGrandCarreau() {
+		int nb = 0;
+		ListeCarreaux lc = new ListeCarreaux();
+		for (int i = 0; i < lc.nbCarreaux(); ++i) {
+			if (nb < lc.getCarreau(i).getHauteur()) {
+				nb = lc.getCarreau(i).getHauteur();
+			} else if (nb < lc.getCarreau(i).getLargeur()) {
+				nb = lc.getCarreau(i).getLargeur();
+			}
+		}
+		return nb;
+
+	}
+
 	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
 	// PRECEDENTE
 	public String toStringCarreauJouable(Carte carte) {
@@ -103,14 +117,14 @@ public class Jeux {
 		int r = 0;
 		for (int i = 0; i < listeCarreauJouable.size(); ++i) {
 			for (int k = 0; listeCarreauJouable.get(i).getLargeur() > k; ++k) {
-				tab.add(new char[3]);
+				tab.add(new char[plusGrandCarreau()]);
 				for (int j = 0; listeCarreauJouable.get(i).getHauteur() > j; ++j) {
 					tab.get(r)[j] = listeCarreauJouable.get(i).getLettre();
 				}
 				r++;
 			}
 			r++;
-			tab.add(new char[3]);
+			tab.add(new char[plusGrandCarreau()]);
 		}
 		// STRING BUILDER
 		for (int i = tab.get(0).length - 1; i >= 0; --i) {

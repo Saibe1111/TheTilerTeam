@@ -69,14 +69,14 @@ public class Carreau {
 			return !Character.isUpperCase(this.lettre);
 		case 'R':
 			return Character.isUpperCase(this.lettre);
-		case '1':
-			return this.carreauTailleN(1);
-		case '2':
-			return this.carreauTailleN(2);
-		case '3':
-			return this.carreauTailleN(3);
+//		case '1':
+//			return this.carreauTailleN(1);
+//		case '2':
+//			return this.carreauTailleN(2);
+//		case '3':
+//			return this.carreauTailleN(3);
 		default:
-			return false;
+			return this.carreauTailleN(Integer.parseInt(String.valueOf(c)));
 		}
 
 	}
