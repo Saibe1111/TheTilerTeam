@@ -44,7 +44,7 @@ public class Appli {
 			// ON AFFICHE LA CARTE PIOCHEE
 			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
-			String string = j.toStringCarreauJouable(j.carreauxJouable(c));
+			String string = j.toStringCarreauJouable(c);
 			if (string.contentEquals("Carte écarté, aucun carreau jouable"))
 				CommandeValide = true;
 			System.out.println(string);

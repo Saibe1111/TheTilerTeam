@@ -64,7 +64,7 @@ public class Jeux {
 	}
 	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
 
-	public ArrayList<Carreau> carreauxJouable(Carte carte) {
+	private ArrayList<Carreau> carreauxJouable(Carte carte) {
 
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<Carreau>();
 		for (int i = 0; i < carreauxBleu.nbCarreaux(); ++i) {
@@ -90,7 +90,8 @@ public class Jeux {
 
 	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
 	// PRECEDENTE
-	public String toStringCarreauJouable(ArrayList<Carreau> listeCarreauJouable) {
+	public String toStringCarreauJouable(Carte carte) {
+		ArrayList<Carreau> listeCarreauJouable = this.carreauxJouable(carte);
 		if (listeCarreauJouable.size() == 0) {
 			paquet.ajouteCarteEcartee();
 			return "Carte écarté, aucun carreau jouable";
@@ -111,7 +112,6 @@ public class Jeux {
 			r++;
 			tab.add(new char[3]);
 		}
-
 		// STRING BUILDER
 		for (int i = tab.get(0).length - 1; i >= 0; --i) {
 			for (int j = 0; j < tab.size(); ++j) {
