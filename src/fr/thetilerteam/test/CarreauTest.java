@@ -81,51 +81,51 @@ class CarreauTest {
 		// 1
 
 		c = new Carreau(1, 3, 't');
-		assertTrue("Problème test taille largeur", c.carteTestCarreau('1'));
+		assertTrue("Problème test taille largeur", c.correspondA('1'));
 
 		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test taille hauteur", c.carteTestCarreau('1'));
+		assertTrue("Problème test taille hauteur", c.correspondA('1'));
 
 		c = new Carreau(2, 3, 't');
-		assertFalse("Problème test taille false", c.carteTestCarreau('1'));
+		assertFalse("Problème test taille false", c.correspondA('1'));
 
 		// 2
 
 		c = new Carreau(2, 3, 't');
-		assertTrue("Problème test taille largeur", c.carteTestCarreau('2'));
+		assertTrue("Problème test taille largeur", c.correspondA('2'));
 
 		c = new Carreau(3, 2, 't');
-		assertTrue("Problème test taille hauteur", c.carteTestCarreau('2'));
+		assertTrue("Problème test taille hauteur", c.correspondA('2'));
 
 		c = new Carreau(1, 3, 't');
-		assertFalse("Problème test taille false", c.carteTestCarreau('2'));
+		assertFalse("Problème test taille false", c.correspondA('2'));
 
 		// 3
 
 		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test taille largeur", c.carteTestCarreau('3'));
+		assertTrue("Problème test taille largeur", c.correspondA('3'));
 
 		c = new Carreau(1, 3, 't');
-		assertTrue("Problème test taille hauteur", c.carteTestCarreau('3'));
+		assertTrue("Problème test taille hauteur", c.correspondA('3'));
 
 		c = new Carreau(2, 1, 't');
-		assertFalse("Problème test taille false", c.carteTestCarreau('3'));
+		assertFalse("Problème test taille false", c.correspondA('3'));
 
 		// R
 
 		c = new Carreau(3, 1, 'T');
-		assertTrue("Problème test couleur rouge", c.carteTestCarreau('R'));
+		assertTrue("Problème test couleur rouge", c.correspondA('R'));
 
 		c = new Carreau(2, 1, 't');
-		assertFalse("Problème test couleur rouge false", c.carteTestCarreau('R'));
+		assertFalse("Problème test couleur rouge false", c.correspondA('R'));
 
 		// B
 
 		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test couleur bleu", c.carteTestCarreau('B'));
+		assertTrue("Problème test couleur bleu", c.correspondA('B'));
 
 		c = new Carreau(2, 1, 'T');
-		assertFalse("Problème test couleur bleu", c.carteTestCarreau('B'));
+		assertFalse("Problème test couleur bleu", c.correspondA('B'));
 
 	}
 

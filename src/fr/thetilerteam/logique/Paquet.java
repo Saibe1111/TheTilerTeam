@@ -17,22 +17,21 @@ public class Paquet {
 
 	public Paquet() {
 		cartesEcartees = 0;
-
-		// ICI ON SPECIFIE LE NOMBRE DE CARTE, LEUR APPELATION ET LEUR DENOMINATION POUR
-		// LE PROGRAMME
-		// ON PEUT EN AJOUTER, EN SUPPRIMER, CHANGER LES APPELATION
-
-		String[][] tailles = { { String.valueOf(9), "Bleu", "B" }, { String.valueOf(9), "Rouge", "R" },
-				{ String.valueOf(5), "Taille 1", "1" }, { String.valueOf(5), "Taille 2", "2" },
-				{ String.valueOf(5), "Taille 3", "3" } };
-
-		// ON CONSTRUIT LA LISTE DES CARTES
+		final int NB_CRT_COUL =  9;
+		final int NB_CRT_TAILLE = 5;
+		final int TAILLE_MIN = 1;
+		final int TAILLE_MAX = 3;
 
 		paquet = new ArrayList<>();
-		for (String[] taille : tailles)
-			for (int i = 0; i < Integer.parseInt(taille[0]); ++i)
-				// paquet.add(new Carte(taille[1], taille[2].charAt(0)));
-				this.paquet.add(new Carte(taille[1], taille[2].charAt(0)));
+
+		for (int i = 0; i < NB_CRT_COUL; ++i) {
+			paquet.add(new Carte(Couleur.BLEU));
+			paquet.add(new Carte(Couleur.ROUGE));
+		}
+		for (int i = 0; i < NB_CRT_TAILLE; ++i)
+			for (int taille = TAILLE_MIN; taille <= TAILLE_MAX; ++taille)
+				paquet.add(new Carte(taille));
+
 		// ON MELANGE LES CARTES
 		melanger();
 
@@ -48,8 +47,8 @@ public class Paquet {
 	public Carte piocher() throws Exception {
 		if (paquet.size() == 0)
 			throw new Exception("Plus de carte dans le paquet fin de la partie");
-		Carte c = this.paquet.get(0);
-		this.paquet.remove(0);
+		Carte c = this.paquet.get(paquet.size() - 1);
+		this.paquet.remove(paquet.size() - 1);
 		return c;
 	}
 

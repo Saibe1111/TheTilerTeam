@@ -10,15 +10,18 @@ package fr.thetilerteam.logique;
 
 public class Carreau {
 
+	private Couleur couleur;
 	private int hauteur;
 	private int largeur;
 	private char lettre;
 
 	// CONSTRUCTEUR
-	public Carreau(int largeur, int hauteur, char lettre) {
-		this.setLargeur(largeur);
-		this.setHauteur(hauteur);
-		this.setLettre(lettre);
+
+	public Carreau(int largeur, int hauteur, char lettre,Couleur couleur) {
+		this.couleur = couleur;
+		this.hauteur = hauteur;
+		this.largeur = largeur;
+		this.lettre = lettre;
 	}
 
 	// HAUTEUR
@@ -27,29 +30,19 @@ public class Carreau {
 		return this.hauteur;
 	}
 
-	private void setHauteur(int hauteur) {
-		assert hauteur > 0 : "Impossible que la hauteur soit null ou négatif";
-		this.hauteur = hauteur;
-	}
-
 	// LONGUEUR
 
 	public int getLargeur() {
 		return this.largeur;
 	}
 
-	private void setLargeur(int largeur) {
-		assert largeur > 0 : "Impossible que la largeur soit null ou négatif";
-		this.largeur = largeur;
-	}
-
 	// LETTRE
 	public char getLettre() {
 		return this.lettre;
 	}
-
-	private void setLettre(char lettre) {
-		this.lettre = lettre;
+	// LETTRE
+	public Couleur getCouleur() {
+		return this.couleur;
 	}
 
 	// CARREAU DE TAILLE N
@@ -58,26 +51,4 @@ public class Carreau {
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 
-	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE
-	public void mettreLettreEnMaj() {
-		this.lettre = Character.toUpperCase(this.lettre);
-	}
-
-	public boolean carteTestCarreau(char c) {
-		switch (c) {
-		case 'B':
-			return !Character.isUpperCase(this.lettre);
-		case 'R':
-			return Character.isUpperCase(this.lettre);
-//		case '1':
-//			return this.carreauTailleN(1);
-//		case '2':
-//			return this.carreauTailleN(2);
-//		case '3':
-//			return this.carreauTailleN(3);
-		default:
-			return this.carreauTailleN(Integer.parseInt(String.valueOf(c)));
-		}
-
-	}
 }

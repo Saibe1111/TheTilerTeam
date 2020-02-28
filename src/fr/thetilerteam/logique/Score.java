@@ -15,9 +15,8 @@ public class Score {
 		scores = 0;
 	}
 
-	public int getScore(ListeCarreaux listeRouge, ListeCarreaux listeBleu, Paquet p, Mur m) {
+	public int getScore( ListeCarreaux listeBleu, Paquet p, Mur m) {
 		this.calculerCarteEcartee(p);
-		this.calculerPointCarreauxPasPoseListe(listeRouge);
 		this.calculerPointCarreauxPasPoseListe(listeBleu);
 		this.calculerPointNiveauComplet(m);
 		return scores;

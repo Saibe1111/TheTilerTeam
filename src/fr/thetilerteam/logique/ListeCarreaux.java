@@ -20,23 +20,14 @@ public class ListeCarreaux {
 		// CHANGER LES TAILLES (HAUTEUR MAX 3, SINON
 		// PROBLEME AVEC L'AFFICHAGE DES CARREAUX JOUABLE CAR TABLEAU DE CHAR DE
 		// HAUTEUR) --FIXABLE PAR DOUBLE ARRAYLIST, SI ON A LE TEMPS
-		int[][] tailles = { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 2, 2 }, { 1, 3 }, { 3, 1 }, { 2, 3 }, { 3, 2 }, { 3, 3 },
-				{ 4, 4 } };
+		int[][] tailles = { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 2, 2 }, { 1, 3 }, { 3, 1 }, { 2, 3 }, { 3, 2 }, { 3, 3 }};
 		// ON CONSTRUIT LA LISTE DES DES CARREAUX
 		listeCarreaux = new ArrayList<>();
-		for (int[] taille : tailles)
+		for (int[] taille : tailles){
 			// ON STOCK CHAQUE CARREAU DANS LA LISTE AVEC CES PARAMETRES
-			this.listeCarreaux.add(new Carreau(taille[0], taille[1], c++));
-
-	}
-
-	// METTRE EN MAJUSCULE LES LETTRE (POUR LES CARREAUX ROUGE)
-
-	public ArrayList<Carreau> mettreLettresEnMajuscule() {
-		// ON PARCOUR LA LISTE ET ON MET CHAQUE LETTRE EN MAJUSCULE
-		for (Carreau car : this.listeCarreaux)
-			car.mettreLettreEnMaj();
-		return this.listeCarreaux;
+			this.listeCarreaux.add(new Carreau(taille[0], taille[1], c, Couleur.BLEU));
+			this.listeCarreaux.add(new Carreau(taille[0], taille[1], Character.toUpperCase(c++),Couleur.ROUGE));
+		}
 	}
 
 	// RECUPERER UN CARREAU

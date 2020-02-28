@@ -11,7 +11,7 @@ package fr.thetilerteam.appli;
 import java.util.Scanner;
 
 import fr.thetilerteam.logique.Carte;
-import fr.thetilerteam.logique.Jeux;
+import fr.thetilerteam.logique.Jeu;
 
 public class Appli {
 
@@ -22,18 +22,18 @@ public class Appli {
 
 		// ON DECLARE UN NOUVEAU JEUX
 		boolean FinJeux = true;
-		Jeux j = new Jeux();
+		Jeu j = new Jeu();
 
 		// s.append(FinJeux);
 		// TANT QUE LE JEUX N'EST PAS FINI ON BOUCLE
 		while (FinJeux) {
 			boolean CommandeValide = false;
 			// ON AFFICHE LE MUR (ZONE A CARRELER)
-			System.out.println(j.getMur().toStringMur() + "\n");
+			System.out.println(j.toStringMur() + "\n");
 			Carte c = null;
 			try {
 				// ON PIOCHE UNE CARTE
-				c = j.getPaquet().piocher();
+				c = j.piocher();
 			} catch (Exception e) {
 				FinJeux = false;
 				System.err.println(e.getMessage());
@@ -42,7 +42,7 @@ public class Appli {
 			}
 
 			// ON AFFICHE LA CARTE PIOCHEE
-			System.out.println("Carte piochée: " + c.getNomCarte() + "\nVoici la liste des carreaux utilisable:");
+			System.out.println(c.toString());
 			// ON AFFICHE LES CARREAUX DESIGNES PAR LA CARTE
 			String string = j.toStringCarreauJouable(c);
 			if (string.contentEquals("Carte écarté, aucun carreau jouable"))
@@ -75,5 +75,6 @@ public class Appli {
 		// ON FERME LE SCANNER
 		in.close();
 	}
+
 
 }
