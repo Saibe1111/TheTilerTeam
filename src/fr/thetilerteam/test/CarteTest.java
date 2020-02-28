@@ -9,11 +9,9 @@
 package fr.thetilerteam.test;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import fr.thetilerteam.logique.Carte;
-
-import static org.junit.Assert.*;
+import fr.thetilerteam.logique.Couleur;
 
 class CarteTest {
 
@@ -21,17 +19,7 @@ class CarteTest {
 
 	@BeforeEach
 	void setUp() {
-		c = new Carte("test", 't');
-	}
-
-	@Test
-	void testGetNomCarte() {
-		assertSame("Problème getNomCarte", "test", c.getNomCarte());
-	}
-
-	@Test
-	void testGetTypeCarte() {
-		assertEquals("Problème getTypeCarte", 't', c.getTypeCarte());
+		c = new Carte(Couleur.BLEU);
 	}
 
 }

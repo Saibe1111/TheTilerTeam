@@ -1,7 +1,6 @@
 package fr.thetilerteam.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fr.thetilerteam.logique.Carreau;
+import fr.thetilerteam.logique.Couleur;
 
 class CarreauTest {
 
@@ -16,28 +16,28 @@ class CarreauTest {
 
 	@BeforeEach
 	void setUp() {
-		c = new Carreau(1, 1, 't');
+		c = new Carreau(1, 1, 't', Couleur.BLEU);
 	}
 
 	@Test
 	void testNegatif() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(1, -1, 't');
+			c = new Carreau(1, -1, 't', Couleur.BLEU);
 		}, "Problème de gestion du négatif dans la déclaration carreaux");
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(-1, 1, 't');
+			c = new Carreau(-1, 1, 't', Couleur.BLEU);
 		}, "Problème de gestion du négatif dans la déclaration carreaux");
 	}
 
 	@Test
 	void testNull() {
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(1, 0, 't');
+			c = new Carreau(1, 0, 't', Couleur.BLEU);
 		}, "Problème de gestion du null dans la déclaration carreaux");
 
 		Assertions.assertThrows(AssertionError.class, () -> {
-			c = new Carreau(0, 1, 't');
+			c = new Carreau(0, 1, 't', Couleur.BLEU);
 		}, "Problème de gestion du null dans la déclaration carreaux");
 	}
 
@@ -67,66 +67,6 @@ class CarreauTest {
 		Assertions.assertThrows(AssertionError.class, () -> {
 			c.carreauTailleN(0);
 		}, "Problème de gestion du null dans CarreauTailleN");
-	}
-
-	@Test
-	void testMettreLettreEnMaj() {
-		c.mettreLettreEnMaj();
-		assertEquals("Problème mettreLettreEnMaj", c.getLettre(), 'T');
-	}
-
-	@Test
-	void testCarteTestCarreau() {
-
-		// 1
-
-		c = new Carreau(1, 3, 't');
-		assertTrue("Problème test taille largeur", c.correspondA('1'));
-
-		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test taille hauteur", c.correspondA('1'));
-
-		c = new Carreau(2, 3, 't');
-		assertFalse("Problème test taille false", c.correspondA('1'));
-
-		// 2
-
-		c = new Carreau(2, 3, 't');
-		assertTrue("Problème test taille largeur", c.correspondA('2'));
-
-		c = new Carreau(3, 2, 't');
-		assertTrue("Problème test taille hauteur", c.correspondA('2'));
-
-		c = new Carreau(1, 3, 't');
-		assertFalse("Problème test taille false", c.correspondA('2'));
-
-		// 3
-
-		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test taille largeur", c.correspondA('3'));
-
-		c = new Carreau(1, 3, 't');
-		assertTrue("Problème test taille hauteur", c.correspondA('3'));
-
-		c = new Carreau(2, 1, 't');
-		assertFalse("Problème test taille false", c.correspondA('3'));
-
-		// R
-
-		c = new Carreau(3, 1, 'T');
-		assertTrue("Problème test couleur rouge", c.correspondA('R'));
-
-		c = new Carreau(2, 1, 't');
-		assertFalse("Problème test couleur rouge false", c.correspondA('R'));
-
-		// B
-
-		c = new Carreau(3, 1, 't');
-		assertTrue("Problème test couleur bleu", c.correspondA('B'));
-
-		c = new Carreau(2, 1, 'T');
-		assertFalse("Problème test couleur bleu", c.correspondA('B'));
-
 	}
 
 }
