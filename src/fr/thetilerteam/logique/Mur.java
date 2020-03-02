@@ -88,9 +88,8 @@ public class Mur {
 		for (int y = 0; y < this.tailleYTableau(); ++y) {
 			boolean Complet = true;
 			for (int x = 0; x < this.tailleXTableau(); ++x) {
-				if (mur.get(y)[x] == 0) {
+				if (mur.get(y)[x] == ' ') {
 					Complet = false;
-					break;
 				}
 			}
 			if (Complet)

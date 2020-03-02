@@ -5,13 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.thetilerteam.logique.Carreau;
 import fr.thetilerteam.logique.Mur;
 
 class MurTest {
 
 	private static Mur m;
-	private static Carreau c;
 
 	@BeforeEach
 	void setUp() {
@@ -32,6 +30,18 @@ class MurTest {
 		m.setMur(3, 0, 't');
 		m.setMur(4, 0, 't');
 		assertEquals(1, m.nombreNiveauComplet());
+	}
+
+	@Test
+	void testPeutRecevoir() throws Exception {
+		// CLONAGE
+//		try {
+//
+//			m.peutRecevoir(3, 0, c2);
+//			fail("Carreau impossible a placer Clonnage");
+//		} catch (Exception e) {
+//		}
+
 	}
 
 }

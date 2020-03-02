@@ -164,9 +164,7 @@ public class Jeu {
 		this.score -= p.getCartesEcartees();
 	}
 
-	public void ecarteeCarte() {
-		this.ecarteeCarte();
-	}
+	public void ecarteeCarte() { paquet.ajouteCarteEcartee(); }
 
 	public boolean murPeutRecevoir(int X, int Y, Carreau carreau) throws Exception {
 		return mur.peutRecevoir(X, Y, carreau);

@@ -43,17 +43,22 @@ class CarreauTest {
 
 	@Test
 	void testGetHauteur() {
-		assertTrue("Problème getHauteur", c.getHauteur() == 1);
+		assertEquals("Problème getHauteur ", 1, c.getHauteur());
 	}
 
 	@Test
 	void testGetLargeur() {
-		assertTrue("Problème getLargeur", c.getLargeur() == 1);
+		assertEquals("Problème getLargeur ", 1, c.getLargeur());
 	}
 
 	@Test
 	void testGetLettre() {
-		assertEquals("Problème getLettre" + c.getLettre(), c.getLettre(), 't');
+		assertEquals("Problème getLettre " + c.getLettre(), c.getLettre(), 't');
+	}
+
+	@Test
+	void testGetCouleur() {
+		assertEquals("Problème getLettre " + c.getCouleur(), c.getCouleur(), Couleur.BLEU);
 	}
 
 	@Test

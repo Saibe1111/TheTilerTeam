@@ -67,7 +67,7 @@ public class Appli {
 					// SI LA COMMANDE PRECEDENTE DE PEUX PAS S'EXECUTER, ON AFFICHE LE MESSAGE
 					// D'ERREUR
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 					System.err.println(e.getMessage());
 					// ON SET LA COMMANDE DANS LA POSITION OU ELLE EST NON VALIDE
 					CommandeValide = false;

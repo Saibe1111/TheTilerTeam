@@ -50,6 +50,7 @@ public class ListeCarreaux {
 			if (this.getCarreau(i).getLettre() == lettre) {
 				// ON SUPPRIME LE CARREAU
 				this.listeCarreaux.remove(i);
+				break;
 			}
 		}
 	}

@@ -18,6 +18,8 @@ public class Carreau {
 	// CONSTRUCTEUR
 
 	public Carreau(int largeur, int hauteur, char lettre,Couleur couleur) {
+		assert hauteur > 0;
+		assert largeur >0;
 		this.couleur = couleur;
 		this.hauteur = hauteur;
 		this.largeur = largeur;
@@ -26,7 +28,7 @@ public class Carreau {
 
 	// HAUTEUR
 
-	public int getHauteur() {
+	 public int getHauteur() {
 		return this.hauteur;
 	}
 
@@ -40,7 +42,7 @@ public class Carreau {
 	public char getLettre() {
 		return this.lettre;
 	}
-	// LETTRE
+	// COULEUR
 	public Couleur getCouleur() {
 		return this.couleur;
 	}
