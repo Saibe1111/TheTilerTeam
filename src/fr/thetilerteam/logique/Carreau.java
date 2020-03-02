@@ -17,9 +17,11 @@ public class Carreau {
 
 	// CONSTRUCTEUR
 
-	public Carreau(int largeur, int hauteur, char lettre,Couleur couleur) {
-		assert hauteur > 0;
-		assert largeur >0;
+	public Carreau(int largeur, int hauteur, char lettre, Couleur couleur) {
+		if (largeur <= 0)
+			throw new IllegalArgumentException();
+		if (hauteur <= 0)
+			throw new IllegalArgumentException();
 		this.couleur = couleur;
 		this.hauteur = hauteur;
 		this.largeur = largeur;
@@ -28,7 +30,7 @@ public class Carreau {
 
 	// HAUTEUR
 
-	 public int getHauteur() {
+	public int getHauteur() {
 		return this.hauteur;
 	}
 
@@ -42,6 +44,7 @@ public class Carreau {
 	public char getLettre() {
 		return this.lettre;
 	}
+
 	// COULEUR
 	public Couleur getCouleur() {
 		return this.couleur;
@@ -49,7 +52,8 @@ public class Carreau {
 
 	// CARREAU DE TAILLE N
 	public boolean carreauTailleN(int n) {
-		assert n > 0 : "Impossible que n soit null ou négatif";
+		if (n <= 0)
+			throw new IllegalArgumentException();
 		return n == this.getLargeur() || n == this.getHauteur();
 	}
 

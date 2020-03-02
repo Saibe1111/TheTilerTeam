@@ -23,10 +23,13 @@ class CarteTest {
 
 	@Test
 	void testCorrespondA() {
+		Carte cCouleur2 = new Carte(Couleur.ROUGE);
 		Carreau c1 = new Carreau(1, 1, 'a', Couleur.BLEU);
 		Carreau c2 = new Carreau(2, 2, 'a', Couleur.ROUGE);
 		assertTrue("Pb correspondance carte ", cCouleur.correspondA(c1));
 		assertFalse("Pb correspondance carte ", cCouleur.correspondA(c2));
+		assertTrue("Pb correspondance carte ", cCouleur2.correspondA(c2));
+		assertFalse("Pb correspondance carte ", cCouleur2.correspondA(c1));
 		assertTrue("Pb correspondance carte ", cTaille.correspondA(c1));
 		assertFalse("Pb correspondance carte ", cTaille.correspondA(c2));
 	}

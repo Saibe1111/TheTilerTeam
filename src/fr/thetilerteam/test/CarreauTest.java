@@ -1,6 +1,7 @@
 package fr.thetilerteam.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Assertions;
@@ -21,22 +22,22 @@ class CarreauTest {
 
 	@Test
 	void testNegatif() {
-		Assertions.assertThrows(AssertionError.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			c = new Carreau(1, -1, 't', Couleur.BLEU);
 		}, "Problème de gestion du négatif dans la déclaration carreaux");
 
-		Assertions.assertThrows(AssertionError.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			c = new Carreau(-1, 1, 't', Couleur.BLEU);
 		}, "Problème de gestion du négatif dans la déclaration carreaux");
 	}
 
 	@Test
 	void testNull() {
-		Assertions.assertThrows(AssertionError.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			c = new Carreau(1, 0, 't', Couleur.BLEU);
 		}, "Problème de gestion du null dans la déclaration carreaux");
 
-		Assertions.assertThrows(AssertionError.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			c = new Carreau(0, 1, 't', Couleur.BLEU);
 		}, "Problème de gestion du null dans la déclaration carreaux");
 	}
@@ -63,13 +64,12 @@ class CarreauTest {
 
 	@Test
 	void testCarreauTailleN() {
+		c = new Carreau(1, 2, 't', Couleur.BLEU);
 		assertTrue("Problème carreauTailleN", c.carreauTailleN(1));
+		assertFalse("Problème carreauTailleN", c.carreauTailleN(3));
+		assertTrue("Problème carreauTailleN", c.carreauTailleN(2));
 
-		Assertions.assertThrows(AssertionError.class, () -> {
-			c.carreauTailleN(-1);
-		}, "Problème de gestion du négatif dans CarreauTailleN");
-
-		Assertions.assertThrows(AssertionError.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			c.carreauTailleN(0);
 		}, "Problème de gestion du null dans CarreauTailleN");
 	}

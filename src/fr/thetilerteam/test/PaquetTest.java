@@ -30,7 +30,7 @@ class PaquetTest {
 			c = p.piocher();
 		try {
 			c = p.piocher();
-			fail("Paquet vide sans déclancher l'exeption");
+			fail("Paquet vide sans dï¿½clancher l'exeption");
 		} catch (Exception e) {
 
 		}
@@ -40,7 +40,7 @@ class PaquetTest {
 	@Test
 	void testGetCartesEcarteesEtTestAjouteCarteEcartee() {
 		p.ajouteCarteEcartee();
-		assertTrue("Problème lorsque les cartes sont écartées", p.getCartesEcartees() == 1);
+		assertTrue("Problï¿½me lorsque les cartes sont ï¿½cartï¿½es", p.getCartesEcartees() == 1);
 	}
 
 }

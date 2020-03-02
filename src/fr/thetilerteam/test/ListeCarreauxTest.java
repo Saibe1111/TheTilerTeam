@@ -19,28 +19,28 @@ class ListeCarreauxTest {
 
 	@Test
 	void testListeCarreauxEtTestGetCarreau() {
-		assertTrue("Liste de carreau mal initialisé (hauteur)", lc.getCarreau(0).getHauteur() == 1);
-		assertTrue("Liste de carreau mal initialisé (hauteur)", lc.getCarreau(6).getHauteur() == 2);
+		assertTrue("Liste de carreau mal initialisï¿½ (hauteur)", lc.getCarreau(0).getHauteur() == 1);
+		assertTrue("Liste de carreau mal initialisï¿½ (hauteur)", lc.getCarreau(6).getHauteur() == 2);
 
-		assertTrue("Liste de carreau mal initialisé (largeur)", lc.getCarreau(0).getLargeur() == 1);
-		assertTrue("Liste de carreau mal initialisé (largeur)", lc.getCarreau(6).getLargeur() == 2);
+		assertTrue("Liste de carreau mal initialisï¿½ (largeur)", lc.getCarreau(0).getLargeur() == 1);
+		assertTrue("Liste de carreau mal initialisï¿½ (largeur)", lc.getCarreau(6).getLargeur() == 2);
 
-		assertTrue("Liste de carreau mal initialisé (lettre)", lc.getCarreau(0).getLettre() == 'a');
-		assertTrue("Liste de carreau mal initialisé (lettre)", lc.getCarreau(6).getLettre() == 'd');
-		assertTrue("Liste de carreau mal initialisé (lettre)", lc.getCarreau(1).getLettre() == 'A');
-		assertTrue("Liste de carreau mal initialisé (lettre)", lc.getCarreau(7).getLettre() == 'D');
+		assertTrue("Liste de carreau mal initialisï¿½ (lettre)", lc.getCarreau(0).getLettre() == 'a');
+		assertTrue("Liste de carreau mal initialisï¿½ (lettre)", lc.getCarreau(6).getLettre() == 'd');
+		assertTrue("Liste de carreau mal initialisï¿½ (lettre)", lc.getCarreau(1).getLettre() == 'A');
+		assertTrue("Liste de carreau mal initialisï¿½ (lettre)", lc.getCarreau(7).getLettre() == 'D');
 	}
 
 	@Test
 	void testNbCarreaux() {
-		assertTrue("Problème dans le nombre de carreaux", lc.nbCarreaux() == 18);
+		assertTrue("Problï¿½me dans le nombre de carreaux", lc.nbCarreaux() == 18);
 	}
 
 	@Test
 	void testRetirerCareauListe() {
 		lc.retirerCareauListe('a');
-		assertFalse("Carreau mal retiré", lc.getCarreau(0).getLettre() == 'a');
-		assertTrue("Problème dans le nombre de carreaux", lc.nbCarreaux() == 17);
+		assertFalse("Carreau mal retirï¿½", lc.getCarreau(0).getLettre() == 'a');
+		assertTrue("Problï¿½me dans le nombre de carreaux", lc.nbCarreaux() == 17);
 	}
 
 }

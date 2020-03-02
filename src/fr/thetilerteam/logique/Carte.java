@@ -33,7 +33,6 @@ public class Carte {
     }
 
 	public String toString() {
-
 		if(this.couleur == Couleur.BLEU || this.couleur == Couleur.ROUGE)
 			return "Carte piochée: " + this.couleur + "\nVoici la liste des carreaux utilisable:";
 		else
