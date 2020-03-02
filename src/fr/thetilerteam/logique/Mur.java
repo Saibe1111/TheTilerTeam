@@ -21,7 +21,7 @@ public class Mur {
 	public void ajoutLigne() {
 		final int TAILLE_LARGEUR = 5;
 		this.mur.add(new char[TAILLE_LARGEUR]);
-		Arrays.fill(mur.get(tailleYTableau() -1), ' ');
+		Arrays.fill(mur.get(tailleYTableau() - 1), ' ');
 	}
 
 	public char getMur(int x, int y) {
@@ -100,18 +100,18 @@ public class Mur {
 	}
 
 	public boolean peutRecevoir(int X, int Y, Carreau carreau) throws Exception {
-			if (!appartientAuMur(X, Y))
-				throw new Exception("La position n'appartient pas au mur !");
-			if (!caseVide(X - 1, Y - 1, carreau))
-				throw new Exception("La case n'est pas vide !");
-			if (!carreauAdjacent(X - 1, Y - 1, carreau))
-				throw new Exception("Pas de carreau adajcent !");
-			if (!carreauReposeSurBase(X - 1, Y - 1, carreau))
-				throw new Exception(
-						"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
-			if (!carreauClone(X - 1, Y - 1, carreau))
-				throw new Exception("Le carreau ne doit pas cloner un autre carreau");
-			return true;
+		if (!appartientAuMur(X, Y))
+			throw new Exception("La position n'appartient pas au mur !");
+		if (!caseVide(X - 1, Y - 1, carreau))
+			throw new Exception("La case n'est pas vide !");
+		if (!carreauAdjacent(X - 1, Y - 1, carreau))
+			throw new Exception("Pas de carreau adajcent !");
+		if (!carreauReposeSurBase(X - 1, Y - 1, carreau))
+			throw new Exception(
+					"Toute la base du carreau repose soit sur le bas de la zone à carreler, soit sur d’autres cartons.");
+		if (!carreauClone(X - 1, Y - 1, carreau))
+			throw new Exception("Le carreau ne doit pas cloner un autre carreau");
+		return true;
 	}
 
 	// PERMET DE SAVOIR SI UNE CASE EST DEJA OCCUPEE PAR UN CARREAU
@@ -188,7 +188,7 @@ public class Mur {
 
 	private int cloneH1(int y, int x, Carreau c) {
 		int h1 = 0;
-		if (y + c.getHauteur() < this.tailleYTableau() + 1) {
+		if (y + c.getHauteur() < this.tailleYTableau()) {
 			for (int j = y; j < y + c.getHauteur(); ++j)
 				if (this.getMur(x - 1, j) == this.getMur(x - 1, y))
 					h1++;
@@ -211,9 +211,11 @@ public class Mur {
 		int h1 = 0;
 		int h2 = 0;
 		int l = 0;
+		// System.out.println();
 		if (y == 0) {
 			if (x != 0) {
 				h1 = this.cloneH1(y, x, c);
+				System.out.println(h1);
 				if (h1 == c.getHauteur())
 					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y))
 						return false;
