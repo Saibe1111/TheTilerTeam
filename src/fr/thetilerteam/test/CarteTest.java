@@ -2,6 +2,7 @@ package fr.thetilerteam.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,9 @@ class CarteTest {
 		assertFalse("Pb correspondance carte ", cCouleur2.correspondA(c1));
 		assertTrue("Pb correspondance carte ", cTaille.correspondA(c1));
 		assertFalse("Pb correspondance carte ", cTaille.correspondA(c2));
+		assertEquals("Carte piochée: BLEU\nVoici la liste des carreaux utilisable:", cCouleur.toString());
+		assertEquals("Carte piochée: Taille 1\nVoici la liste des carreaux utilisable:", cTaille.toString());
+
 	}
 
 }
