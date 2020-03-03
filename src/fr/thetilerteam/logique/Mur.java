@@ -1,9 +1,9 @@
 /**
-  * @file Mur.java
-  * @author Iris CHAIX
-  * @author Sébastien CUVELLIER
-  * @version version 1 - 20/02/2020
-  * @brief 	Classe Mur
+ * @file Mur.java
+ * @author Iris CHAIX
+ * @author Sébastien CUVELLIER
+ * @version version 1 - 20/02/2020
+ * @brief 	Classe Mur
  */
 
 package fr.thetilerteam.logique;
@@ -117,7 +117,7 @@ public class Mur {
 	// UTILE LORSQUE LE JOUEUR POSE UN CARREAU
 
 	private boolean caseVide(int x, int y, Carreau c) {
-		if (y < this.tailleYTableau()) {
+		if (y + c.getHauteur() > this.tailleYTableau()) {
 			for (int i = x; i < x + c.getLargeur(); ++i)
 				for (int j = y; j < this.tailleYTableau(); ++j)
 					if (this.getMur(i, j) != ' ')
@@ -136,30 +136,30 @@ public class Mur {
 		// ON VERIFIE PAS LA GAUCHE DU TABLEAU SINON ON EN SORTIRAI
 		if (x != 0) {
 			// ON REGARDE SI ON A UN CARREAU SUR LA GAUCHE
-			if (y + c.getHauteur() < this.tailleYTableau()) {
-				for (int j = y; j < y + c.getHauteur(); ++j)
-					if (this.getMur(x - 1, j) != ' ')
-						return true;
-			} else {
-				for (int j = y; j < this.tailleYTableau(); ++j)
-					if (this.getMur(x - 1, j) != ' ')
-						return true;
+//			if (y + c.getHauteur() < this.tailleYTableau()) {
+//				for (int j = y; j < y + c.getHauteur(); ++j)
+//					if (this.getMur(x - 1, j) != ' ')
+//						return true;
+//			} else {
+			for (int j = y; j < this.tailleYTableau(); ++j)
+				if (this.getMur(x - 1, j) != ' ')
+					return true;
 
-			}
+			// }
 		}
 		// ON VERIFIE PAS LA DROITE DU TABLEAU SINON ON EN SORTIRAI
 		if (x + c.getLargeur() != this.tailleXTableau()) {
 			// System.out.println("entree");
-			if (y + c.getHauteur() < this.tailleYTableau()) {
-				for (int j = y; j < y + c.getHauteur(); ++j)
-					if (this.getMur(x + c.getLargeur(), j) != ' ')
-						return true;
-			} else {
-				for (int j = y; j < this.tailleYTableau(); ++j)
-					if (this.getMur(x + c.getLargeur(), j) != ' ')
-						return true;
+//			if (y + c.getHauteur() < this.tailleYTableau()) {
+//				for (int j = y; j < y + c.getHauteur(); ++j)
+//					if (this.getMur(x + c.getLargeur(), j) != ' ')
+//						return true;
+//			} else {
+			for (int j = y; j < this.tailleYTableau(); ++j)
+				if (this.getMur(x + c.getLargeur(), j) != ' ')
+					return true;
 
-			}
+			// }
 		}
 		// ON VERIFIE PAS LE BAS DU TABLEAU SINON ON EN SORTIRAI
 		if (y != 0) {
@@ -185,6 +185,80 @@ public class Mur {
 
 	}
 
+	public boolean carreauClone(int x, int y, Carreau c) {
+
+		int h1 = 0;
+		int h2 = 0;
+		int l = 0;
+		if (y == 0) {
+			if (x != 0) {
+				h1 = this.cloneH1(y, x, c);
+				if (h1 == c.getHauteur())
+					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y))
+						return false;
+			}
+		} else {
+			if (x != 0) {
+				h1 = this.cloneH1(y, x, c);
+				if (h1 == c.getHauteur())
+					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y)
+							&& this.getMur(x - 1, y - 1) != this.getMur(x - 1, y))
+						return false;
+
+			}
+		}
+
+		if (y == 0) {
+			if (x + c.getLargeur() != this.tailleXTableau()) {
+				h2 = cloneH2(y, x, c);
+				if (h2 == c.getHauteur())
+					if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y))
+						return false;
+
+			}
+		} else {
+			if (x + c.getLargeur() != this.tailleXTableau()) {
+				h2 = cloneH2(y, x, c);
+				if (h2 == c.getHauteur())
+					if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y)
+							&& this.getMur(x + c.getLargeur(), y - 1) != this.getMur(x + c.getLargeur(), y))
+						return false;
+			}
+		}
+
+		if (x == 0) {
+			if (y != 0) {
+				l = coloneL(y, x, c);
+				if (l == c.getLargeur())
+					return this.getMur(x + c.getLargeur() - 1, y - 1) == this.getMur(x + c.getLargeur(), y - 1);
+			}
+		} else if (x + c.getLargeur() == tailleXTableau()) {
+			if (y != 0) {
+				l = coloneL(y, x, c);
+				if (l == c.getLargeur())
+					return this.getMur(x, y - 1) == this.getMur(x - 1, y - 1);
+
+			}
+		} else {
+			if (y != 0) {
+				l = coloneL(y, x, c);
+				if (l == c.getLargeur())
+					return this.getMur(x, y - 1) == this.getMur(x - 1, y - 1)
+							|| this.getMur(x + c.getLargeur() - 1, y - 1) == this.getMur(x + c.getLargeur(), y - 1);
+			}
+		}
+
+		return true;
+	}
+
+	private int coloneL(int y, int x, Carreau c) {
+		int l = 0;
+		for (int j = x; j < x + c.getLargeur(); ++j)
+			if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
+				l++;
+		return l;
+	}
+
 	private int cloneH1(int y, int x, Carreau c) {
 		int h1 = 0;
 		if (y + c.getHauteur() < this.tailleYTableau()) {
@@ -204,57 +278,6 @@ public class Mur {
 						h2++;
 			}
 		return h2;
-	}
-
-	private boolean carreauClone(int x, int y, Carreau c) {
-		int h1 = 0;
-		int h2 = 0;
-		int l = 0;
-		// System.out.println();
-		if (y == 0) {
-			if (x != 0) {
-				h1 = this.cloneH1(y, x, c);
-				System.out.println(h1);
-				if (h1 == c.getHauteur())
-					if (this.getMur(x - 1, y + h1) != this.getMur(x - 1, y))
-						return false;
-			}
-			if (x + c.getLargeur() != this.tailleXTableau()) {
-				h2 = this.cloneH2(y, x, c);
-
-				if (h2 == c.getHauteur())
-					if (this.getMur(x + c.getLargeur(), y + h2) != this.getMur(x + c.getLargeur(), y))
-						return false;
-			}
-
-		} else {
-			if (x == 0) {
-				l = this.coloneL(y, x, c);
-				if (l == c.getLargeur())
-					if (this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1))
-						return false;
-			} else if (x + c.getLargeur() == tailleXTableau()) {
-				l = this.coloneL(y, x, c);
-				if (l == c.getLargeur())
-					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1))
-						return false;
-			} else {
-				l = this.coloneL(y, x, c);
-				if (l == c.getLargeur())
-					if (this.getMur(x, y - 1) != this.getMur(x - 1, y - 1)
-							&& this.getMur(x + c.getLargeur() - 1, y - 1) != this.getMur(x + c.getLargeur(), y - 1))
-						return false;
-			}
-		}
-		return true;
-	}
-
-	private int coloneL(int y, int x, Carreau c) {
-		int l = 0;
-		for (int j = x; j < x + c.getLargeur(); ++j)
-			if (this.getMur(j, y - 1) == this.getMur(x, y - 1))
-				l++;
-		return l;
 	}
 
 }

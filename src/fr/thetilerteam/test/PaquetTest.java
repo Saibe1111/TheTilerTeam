@@ -1,8 +1,8 @@
 package fr.thetilerteam.test;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,21 +19,13 @@ class PaquetTest {
 	}
 
 	@Test
-	void testPiocherTestPaquet() throws Exception {
-
-	}
-
-	@Test
 	void testPaquetVide() throws Exception {
 		Carte c;
 		for (int i = 0; i < 33; ++i)
 			c = p.piocher();
-		try {
-			c = p.piocher();
-			fail("Paquet vide sans dï¿½clancher l'exeption");
-		} catch (Exception e) {
-
-		}
+		Assertions.assertThrows(Exception.class, () -> {
+			Carte c1 = p.piocher();
+		}, "Problème Paquet vide");
 
 	}
 

@@ -17,7 +17,7 @@ public class Paquet {
 
 	public Paquet() {
 		cartesEcartees = 0;
-		final int NB_CRT_COUL =  9;
+		final int NB_CRT_COUL = 9;
 		final int NB_CRT_TAILLE = 5;
 		final int TAILLE_MIN = 1;
 		final int TAILLE_MAX = 3;
@@ -45,7 +45,7 @@ public class Paquet {
 
 	// PIOCHE
 	public Carte piocher() throws Exception {
-		if (paquet.size() == 0)
+		if (paquet.isEmpty())
 			throw new Exception("Plus de carte dans le paquet fin de la partie");
 		Carte c = this.paquet.get(paquet.size() - 1);
 		this.paquet.remove(paquet.size() - 1);
