@@ -97,8 +97,8 @@ public class Appli {
 			return ("Merci d'avoir joué :) \nVotre score: " + j.getScore() + " points !");
 		} else {
 			// ON STOCK STRINGS PRECEDEMENT DECOUPEE DANS LES INTS
-			int X = Integer.parseInt(chaineArr[1]);
-			int Y = Integer.parseInt(chaineArr[2]);
+			int X = Integer.parseInt(chaineArr[2]);
+			int Y = Integer.parseInt(chaineArr[1]);
 			// ON VERIFIE QUE LA LETTES EST JOUABLE
 			if (!j.lettreJouable(cJouable, test.charAt(0)))
 				// ON RETOURNE UNE EXCEPTION P
