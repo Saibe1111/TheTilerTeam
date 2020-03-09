@@ -28,7 +28,11 @@ public class ListeCarreaux {
 		listeCarreaux = new ArrayList<>();
 		for (int[] taille : tailles) {
 			// ON STOCK CHAQUE CARREAU DANS LA LISTE AVEC CES PARAMETRES
-			this.listeCarreaux.add(new Carreau(taille[0], taille[1], c, Couleur.BLEU));
+			this.listeCarreaux.add(new Carreau(taille[0], taille[1], c++, Couleur.BLEU));
+		}
+		c = 'a';
+		for (int[] taille : tailles) {
+			// ON STOCK CHAQUE CARREAU DANS LA LISTE AVEC CES PARAMETRES
 			this.listeCarreaux.add(new Carreau(taille[0], taille[1], Character.toUpperCase(c++), Couleur.ROUGE));
 		}
 	}
