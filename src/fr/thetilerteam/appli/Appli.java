@@ -8,8 +8,10 @@
 
 package fr.thetilerteam.appli;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.thetilerteam.logique.Carreau;
 import fr.thetilerteam.logique.Carte;
 import fr.thetilerteam.logique.Jeu;
 
@@ -80,6 +82,9 @@ public class Appli {
 		String[] chaineArr = chaine.split("\\s", 3);
 		// VIRER LE SCANNER - STINGBUFFER
 		String test = chaineArr[0];
+
+		ArrayList<Carreau> cJouable = new ArrayList<>();
+		cJouable = j.carreauxJouables(c);
 		// SI LA 1ERE PARTIE DE LA STRING CONTIENT LE MOT NEXT
 		if (test.equals("next")) {
 			// ON ECARTE UNE CARTE
@@ -95,16 +100,16 @@ public class Appli {
 			int X = Integer.parseInt(chaineArr[1]);
 			int Y = Integer.parseInt(chaineArr[2]);
 			// ON VERIFIE QUE LA LETTES EST JOUABLE
-			if (!j.lettreJouable(j.carreauxJouables(c), test.charAt(0)))
+			if (!j.lettreJouable(cJouable, test.charAt(0)))
 				// ON RETOURNE UNE EXCEPTION P
 				throw new Exception("Lettre pas dans la liste !");
 			// ON REGARDE SI LE MUR PEUT RECEVOIR LE CARREAU
-			if (j.murPeutRecevoir(X, Y, j.retrouverCarreau(test.charAt(0), j.carreauxJouables(c))))
+			if (j.murPeutRecevoir(X, Y, j.retrouverCarreau(test.charAt(0), cJouable)))
 				try {// ON ESSAYE D'EXECUTER LES LIGNES SUIVANTES
-					j.placerCarreau(test.charAt(0), X - 1, Y - 1, j.carreauxJouables(c));
+					j.placerCarreau(test.charAt(0), X - 1, Y - 1, cJouable);
 					j.retirerCarreaux(test.charAt(0));
 					return ("Carreaux placée");
-				} catch (ArrayIndexOutOfBoundsException e) {
+				} catch (ArrayIndexOutOfBoundsException e) {// SI ELLE FONCTIONNE PAS ON ATTRAPE UNE EXCEPTION ICI
 					throw new Exception("Impossible vous sortez du tableau !");
 				}
 		}

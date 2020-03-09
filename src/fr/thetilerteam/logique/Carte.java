@@ -9,19 +9,35 @@
 package fr.thetilerteam.logique;
 
 public class Carte {
+
+	// ON DEFINIT LES ATTRIBUT DE LA CLASSE CARTE
     private Couleur couleur;
     private int taille;
 
-    // DEFAULT
+	/**
+	 * CONSTRUCTEUR CARTE COULEUR
+	 * 
+	 * @param couleur, couleur de la carte
+	 */
     public Carte(Couleur couleur) {
     	this.couleur = couleur;
 	}
 
+	/**
+	 * CONSTRUCTEUR CARTE TAILLE
+	 * 
+	 * @param taille, taille de la carte
+	 */
     public Carte(int taille) {
     	this.taille = taille;
 	}
 
-
+	/**
+	 * PERMET DE SAVOIR SI UN CARREAU CORRESPOND A UNE CARTE
+	 * 
+	 * @param c, carreau qu'on veut tester
+	 * @return boolean, si le carreau correspond a la carte
+	 */
     public boolean correspondA(Carreau c) {
 
     	if(this.couleur == Couleur.BLEU)
@@ -32,6 +48,11 @@ public class Carte {
 			return c.carreauTailleN(taille);
     }
 
+	/**
+	 * TO STRING CARTE PIOCHEE
+	 * 
+	 * @return une string avec dedans la carte piochée
+	 */
 	public String toString() {
 		if(this.couleur == Couleur.BLEU || this.couleur == Couleur.ROUGE)
 			return "Carte piochée: " + this.couleur + "\nVoici la liste des carreaux utilisable:";

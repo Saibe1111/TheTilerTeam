@@ -12,12 +12,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu {
+	// ON DEFINIT LES ATTRIBUT DE LA CLASSE JEU
 	private Paquet paquet;
 	private ListeCarreaux carreauxListe;
 	private Mur mur;
 	private int score;
 
-	// CONSTRUCTEUR QUI PERMET D'INITALISER UNE PARTIE
+	/**
+	 * CONSTRUCTEUR QUI PERMET D'INITALISER UNE PARTIE
+	 */
 	public Jeu() {
 		// ON DECLARE: UNE PAQUET, LES CARREAUXROUGES, LES CARREAUX BLEU ET NOTRE
 		// PLATEAU (MUR)
@@ -49,8 +52,13 @@ public class Jeu {
 			break;
 		}
 	}
-	// NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
 
+	/**
+	 * NOUS DONNE LA LISTE DES CARREAUX JOUANLE EN FONCTION D'UNE CARTE
+	 * 
+	 * @param carte, carte en fonction de laquel on determine les carreaux jouables
+	 * @return ArrayList<Carreau> des carreaux qui corresponde a la carte
+	 */
 	public ArrayList<Carreau> carreauxJouables(Carte carte) {
 
 		ArrayList<Carreau> listeCarreauJouable = new ArrayList<>();
@@ -61,6 +69,15 @@ public class Jeu {
 		return listeCarreauJouable;
 	}
 
+	/**
+	 * ON REGARDE SI LA LETTRE DONNEE PAR LE JOUEUR APPARTIENT A LA LISTE DES
+	 * CARREAUX JOUABLE
+	 * 
+	 * @param ArrayList<Carreau>, liste des carreaux jouables
+	 * @param lettre,lettre       qui est un char
+	 * @return boolean, return true si la lettre appartient a la liste des carreaux
+	 *         jouables
+	 */
 	public boolean lettreJouable(ArrayList<Carreau> listeCarreauJouable, char lettre) {
 		boolean test = false;
 		for (Carreau carreau : listeCarreauJouable)
@@ -71,6 +88,12 @@ public class Jeu {
 		return test;
 	}
 
+	/**
+	 * ON DETERMINE LE PLUS GRAND CARREAU DE LA LISTE
+	 * 
+	 * @return int nb, return un int qui correspond a la plus grande valeur de
+	 *         largeur ou hauteur possible
+	 */
 	private int plusGrandCarreau() {
 		int nb = 0;
 		ListeCarreaux lc = new ListeCarreaux();
@@ -82,11 +105,15 @@ public class Jeu {
 			}
 		}
 		return nb;
-
 	}
 
-	// PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE DETERMINEE PAR LA FONCTION
-	// PRECEDENTE
+	/**
+	 * PERMET D'AFFICHER LA LISTE DES CARREAUX JOUABLE
+	 * 
+	 * @param carte, carte qui a été tiré
+	 * @return String, qui correspond a l'affichage des carreaux qui peuvent êtres
+	 *         joué
+	 */
 	public String toStringCarreauJouable(Carte carte) {
 		ArrayList<Carreau> listeCarreauJouable = this.carreauxJouables(carte);
 		if (listeCarreauJouable.size() == 0) {
@@ -118,17 +145,36 @@ public class Jeu {
 		return sb.toString();
 	}
 
-	// PERMET DE RETIRE IN CARREAU
+	/**
+	 * PERMET DE RETIRE IN CARREAU
+	 * 
+	 * @param lettre, lettre de la carte qu'on veut retirer
+	 */
 	public void retirerCarreaux(char lettre) {
 		carreauxListe.retirerCareauListe(lettre);
 	}
 
+	/**
+	 * PERMET DE RETIRE IN CARREAU
+	 * 
+	 * @param lettre,lettre        de la carte qu'on veut retirer
+	 * @param positionX,position   X ou on veut poser le carreau
+	 * @param positionY,position   Y ou on veut poser le carreau
+	 * @param listeCarreauJouable, liste des carreaux possible
+	 */
 	public void placerCarreau(char lettre, int positionX, int positionY, ArrayList<Carreau> listeCarreauJouable) {
 		mur.placerCarreauSurMur(positionX, positionY, this.retrouverCarreau(lettre, listeCarreauJouable));
 		// ON RETIRE LE CARREAU JOUER DE LA LISTE
 		this.retirerCarreaux(lettre);
 	}
 
+	/**
+	 * PERMET DE RETROUVER UN CARREAU DANS UNE LISTE
+	 * 
+	 * @param lettre,lettre        de la carte qu'on veut retirer
+	 * @param listeCarreauJouable, liste des carreaux possible
+	 * @return Carreau, qui correspond a la lettre
+	 */
 	public Carreau retrouverCarreau(char lettre, ArrayList<Carreau> listeCarreauJouable) {
 		for (Carreau carreau : listeCarreauJouable)
 			if (carreau.getLettre() == lettre)
@@ -136,14 +182,29 @@ public class Jeu {
 		return null;
 	}
 
+	/**
+	 * PERMET D'AFFICHER LE MUR
+	 * 
+	 * @return String, du mur
+	 */
 	public String toStringMur() {
 		return mur.toString();
 	}
 
+	/**
+	 * PERMET DE PIOCHER UNE CARTE
+	 * 
+	 * @return String, de la carte
+	 */
 	public Carte piocher() throws Exception {
 		return paquet.piocher();
 	}
 
+	/**
+	 * PERMET DE CALCULER LE SCORE DU JOUEUR
+	 * 
+	 * @return String, du mur
+	 */
 	public int getScore() {
 		this.calculerCarteEcartee(paquet);
 		this.calculerPointCarreauxPasPoseListe(carreauxListe);
@@ -151,21 +212,48 @@ public class Jeu {
 		return score;
 	}
 
+	/**
+	 * PERMET DE CALCULER LE SCORE DU JOUEUR POUR LES NIVEAUX COMPLET
+	 * 
+	 * @param m, mur sur lequel on veut compter les points
+	 */
 	private void calculerPointNiveauComplet(Mur m) {
 		final int NB_POINT_NIVEAU_COMPLET = 5;
 		this.score += NB_POINT_NIVEAU_COMPLET * m.nombreNiveauComplet();
 	}
 
+	/**
+	 * PERMET DE CALCULER LE SCORE DU JOUEUR POUR LES CARREAUX NON POSEE
+	 * 
+	 * @param l, liste a partir de laquel on veut compter les points
+	 */
 	private void calculerPointCarreauxPasPoseListe(ListeCarreaux l) {
 		this.score -= l.nbCarreaux();
 	}
 
+	/**
+	 * PERMET DE CALCULER LE SCORE DU JOUEUR POUR LES CARTES ECARTEE
+	 * 
+	 * @param p, paquet a partir du quel on compte les cartes ecartee
+	 */
 	private void calculerCarteEcartee(Paquet p) {
 		this.score -= p.getCartesEcartees();
 	}
 
+	/**
+	 * PERMET D'ECARTEE UNE CARTE
+	 * 
+	 */
 	public void ecarteeCarte() { paquet.ajouteCarteEcartee(); }
 
+	/**
+	 * PERMET D'ECARTEE UNE CARTE
+	 * 
+	 * @param X,       position X a tester
+	 * @param Y,       position Y a tester
+	 * @param carreau, carreau que l'on veut placer
+	 * @return boolean, true si le mur peut recevoir le carreau
+	 */
 	public boolean murPeutRecevoir(int X, int Y, Carreau carreau) throws Exception {
 		return mur.peutRecevoir(X, Y, carreau);
 	}

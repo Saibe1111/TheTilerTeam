@@ -15,6 +15,9 @@ public class Paquet {
 	private ArrayList<Carte> paquet;
 	private int cartesEcartees;
 
+	/**
+	 * CONSTRUCTEUR
+	 */
 	public Paquet() {
 		cartesEcartees = 0;
 		final int NB_CRT_COUL = 9;
@@ -37,13 +40,18 @@ public class Paquet {
 
 	}
 
-	// POUR MELANGER L'ARRAYLIST
-
+	/**
+	 * POUR MELANGER L'ARRAYLIST
+	 */
 	private void melanger() {
 		Collections.shuffle(this.paquet);
 	}
 
-	// PIOCHE
+	/**
+	 * PIOCHE
+	 * 
+	 * @return Carte qui a été piochée
+	 */
 	public Carte piocher() throws Exception {
 		if (paquet.isEmpty())
 			throw new Exception("Plus de carte dans le paquet fin de la partie");
@@ -52,10 +60,20 @@ public class Paquet {
 		return c;
 	}
 
+	/**
+	 * GETTER CARTE ECARTEE
+	 * 
+	 * @return carte ecartees
+	 */
 	public int getCartesEcartees() {
 		return cartesEcartees;
 	}
 
+	/**
+	 * AJOUTE UNE CARTE ECARTEE
+	 * 
+	 * @return carte ecartees
+	 */
 	public void ajouteCarteEcartee() {
 		++this.cartesEcartees;
 	}

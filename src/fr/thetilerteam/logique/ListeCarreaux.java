@@ -12,6 +12,9 @@ import java.util.ArrayList;
 public class ListeCarreaux {
 	private ArrayList<Carreau> listeCarreaux;
 
+	/**
+	 * CONSTRUCTEUR
+	 */
 	public ListeCarreaux() {
 		// ON SPECIFIE LA LETTRE DU PREMIER CARREAU, LES AUTRES SERONT INCREMENTEE
 		char c = 'a';
@@ -30,29 +33,38 @@ public class ListeCarreaux {
 		}
 	}
 
-	// RECUPERER UN CARREAU
-
+	/**
+	 * CARREAU GETTER
+	 * 
+	 * @param numero du carreau a récupérer
+	 * @return Carreau qui correspond au numéro
+	 */
 	public Carreau getCarreau(int numero) {
 		return this.listeCarreaux.get(numero);
 	}
 
-	// RECUPERER LE NOMBRE DE CARREAU DANS LA LISTE
-
+	/**
+	 * RECUPERER LE NOMBRE DE CARREAU DANS LA LISTE
+	 * 
+	 * @return int, correspond a la taille de la liste
+	 */
 	public int nbCarreaux() {
 		return this.listeCarreaux.size();
 	}
 
-	// PERMET DE RETIRER UN CARREAU DE LA LISTE
-
+	/**
+	 * PERMET DE RETIRER UN CARREAU DE LA LISTE
+	 * 
+	 * @param lettre, de la lettre qu'on veut retirer
+	 */
 	public void retirerCareauListe(char lettre) {
 		// ON CHERCHE LE CARREAU CORRESPONDANT A LA LETTRE QUI EST ENTREE
-		for (int i = 0; i < this.nbCarreaux(); ++i) {
+		for (int i = 0; i < this.nbCarreaux(); ++i)
 			if (this.getCarreau(i).getLettre() == lettre) {
 				// ON SUPPRIME LE CARREAU
 				this.listeCarreaux.remove(i);
 				break;
 			}
-		}
 	}
 
 }
