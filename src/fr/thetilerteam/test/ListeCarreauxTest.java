@@ -20,15 +20,13 @@ class ListeCarreauxTest {
 	@Test
 	void testListeCarreauxEtTestGetCarreau() {
 		assertTrue("Liste de carreau mal initialise (hauteur)", lc.getCarreau(0).getHauteur() == 1);
-		assertTrue("Liste de carreau mal initialise (hauteur)", lc.getCarreau(6).getHauteur() == 2);
 
 		assertTrue("Liste de carreau mal initialise (largeur)", lc.getCarreau(0).getLargeur() == 1);
-		assertTrue("Liste de carreau mal initialise (largeur)", lc.getCarreau(6).getLargeur() == 2);
 
 		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(0).getLettre() == 'a');
-		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(6).getLettre() == 'd');
-		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(1).getLettre() == 'A');
-		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(7).getLettre() == 'D');
+		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(3).getLettre() == 'd');
+		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(9).getLettre() == 'A');
+		assertTrue("Liste de carreau mal initialise (lettre)", lc.getCarreau(12).getLettre() == 'D');
 	}
 
 	@Test

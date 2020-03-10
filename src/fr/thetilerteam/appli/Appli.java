@@ -96,9 +96,18 @@ public class Appli {
 			// ON RETURN UN MESSAGE POUR DIRE QUE LA PARTIE EST FINI ET ON DONNE LE SCORE
 			return ("Merci d'avoir joué :) \nVotre score: " + j.getScore() + " points !");
 		} else {
-			// ON STOCK STRINGS PRECEDEMENT DECOUPEE DANS LES INTS
-			int X = Integer.parseInt(chaineArr[2]);
-			int Y = Integer.parseInt(chaineArr[1]);
+			int X = 0;
+			int Y = 0;
+			try {
+				// ON STOCK STRINGS PRECEDEMENT DECOUPEE DANS LES INTS
+				X = Integer.parseInt(chaineArr[2]);
+				Y = Integer.parseInt(chaineArr[1]);
+			} catch (ArrayIndexOutOfBoundsException e) {
+				throw new Exception("Problème de commande");
+			} catch (NumberFormatException e) {
+				throw new Exception("Problème de commande, veuillez faire attention au nombres !");
+			}
+
 			// ON VERIFIE QUE LA LETTES EST JOUABLE
 			if (!j.lettreJouable(cJouable, test.charAt(0)))
 				// ON RETOURNE UNE EXCEPTION P
@@ -113,6 +122,6 @@ public class Appli {
 					throw new Exception("Impossible vous sortez du tableau !");
 				}
 		}
-		return null;
+		throw new Exception("Problème de commande");
 	}
 }
