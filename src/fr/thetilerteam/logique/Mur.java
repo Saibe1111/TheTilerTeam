@@ -2,7 +2,7 @@
  * @file Mur.java
  * @author Iris CHAIX
  * @author Sébastien CUVELLIER
- * @version version 1 - 20/02/2020
+ * @version version 2 - 10/03/2020
  * @brief 	Classe Mur
  */
 
@@ -113,16 +113,18 @@ public class Mur {
 				sb.append(" ").append(j + 1);
 			else
 				sb.append((j + 1));
+			sb.append(" ");
 			for (int i = 0; i < this.tailleXTableau(); i++) {
 
-				sb.append(this.getMur(i, j));
+				sb.append(this.getMur(i, j) + " ");
 			}
 
 			sb.append("\n");
+
 		}
 		sb.append("  ");
 		for (int i = 1; i < this.tailleXTableau() + 1; i++)
-			sb.append(i);
+			sb.append(" " + i);
 
 		return sb.toString();
 	}
@@ -151,13 +153,15 @@ public class Mur {
 	/**
 	 * PERMET DE SAVOIR SI LE MUR PEUT RECEVOIR LE CARREAU
 	 * 
-	 * @param x, position tableau dans arraylist
-	 * @param y, position arraylist
-	 * @param c, carreau que l'on veut tester
+	 * @param X,       position tableau dans arraylist
+	 * @param Y,       position arraylist
+	 * @param carreau, carreau que l'on veut tester
 	 * @return boolean, true si le carreau valide le test
 	 */
 	public boolean peutRecevoir(int X, int Y, Carreau carreau) throws Exception {
 		if (!appartientAuMur(X, Y))
+			throw new Exception("La position n'appartient pas au mur !");
+		if (!appartientAuMur(X + carreau.getLargeur() - 1, Y + carreau.getHauteur() - 1))
 			throw new Exception("La position n'appartient pas au mur !");
 		if (!caseVide(X - 1, Y - 1, carreau))
 			throw new Exception("La case n'est pas vide !");
